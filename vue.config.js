@@ -60,7 +60,7 @@ module.exports = {
             keepClosingSlash: true,
             sortAttributes: true
           },
-          postProcess(renderedRoute) {
+          postProcess (renderedRoute) {
             /**
              * 懒加载模块会自动注入，无需直接通过script标签引入
              * 而且预渲染的html注入的是modern版本的懒加载模块

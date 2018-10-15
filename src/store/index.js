@@ -5,6 +5,7 @@ import state from './state'
 import mutations from './mutations'
 import actions from './actions'
 import getters from './getters'
+import createPersistedState from 'vuex-persistedstate' // vuex数据持久化插件
 
 Vue.use(Vuex)
 
@@ -16,7 +17,8 @@ const store = new Vuex.Store(
     mutations,
     actions,
     getters,
-    strict: process.env.NODE_ENV === 'development'
+    strict: process.env.NODE_ENV === 'development',
+    plugins: [createPersistedState()]
   }
 )
 
