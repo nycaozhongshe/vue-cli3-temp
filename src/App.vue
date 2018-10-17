@@ -12,29 +12,140 @@
     <keep-alive>
       <router-view />
     </keep-alive>
+
+    <ul>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+    </ul>
+
+    <div v-show-page="{show:show}">
+      我所说的 山东
+    </div>
+    <ul>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+    </ul>
+
   </div>
 </template>
 
 <script>
 export default {
-  beforeCreate () {
-    console.log('beforeCreate', document.querySelector('#nav'))
+  data() {
+    return {
+      set: false
+    };
   },
-  created () {
-    console.log('created', document.querySelector('#nav'))
-  },
-  mounted () {
-    console.log('mounted', document.querySelector('#nav'))
-  },
+  beforeCreate() {},
+  created() {},
+  mounted() {},
   methods: {
-    outputDate () {
-      console.log(new Date().toLocaleString())
+    show(show) {
+      this.set = show;
+      console.log(this.set);
     },
-    switchLanguage (language) {
-      this.$i18n.locale = language
+    outputDate() {},
+    switchLanguage(language) {
+      this.$i18n.locale = language;
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

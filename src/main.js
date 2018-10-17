@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import MetaInfo from 'vue-meta-info'
 import i18n from './i18n/i18n.js'
+import showPage from './directive/show-page/index'
+
+Vue.use(showPage)
 Vue.use(MetaInfo)
 Vue.config.productionTip = false
 
