@@ -66,7 +66,7 @@
       <li>111</li>
     </ul>
 
-    <div v-show-page="{show:show}">
+    <div v-show-page="{show}">
       我所说的 山东
     </div>
     <ul>
@@ -127,25 +127,25 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       set: false
-    };
+    }
   },
-  beforeCreate() {},
-  created() {},
-  mounted() {},
+  beforeCreate () {},
+  created () {},
+  mounted () {},
   methods: {
-    show(show) {
-      this.set = show;
-      console.log(this.set);
+    show (show) {
+      this.set = show
+      console.log(this.set)
     },
-    outputDate() {},
-    switchLanguage(language) {
-      this.$i18n.locale = language;
+    outputDate () {},
+    switchLanguage (language) {
+      this.$i18n.locale = language
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

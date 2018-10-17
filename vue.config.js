@@ -40,6 +40,7 @@ module.exports = {
   baseUrl: BASE_URL,
   outputDir: DIST_ROOT + BASE_URL, // prerendner会借助一个express服务器来预渲染，改变baseUrl后要保证这个模拟服务器能够找到所需的资源
   assetsDir: 'static',
+  lintOnSave: true,
   productionSourceMap: false,
   configureWebpack: config => {
     const myConfig = {}
@@ -131,6 +132,14 @@ module.exports = {
     })
   },
   devServer: {
-    port: 8081
+    port: 8081,
+    open: true,
+    proxy: {
+      '/api^^^': {
+        target: 'http://后台给的地址/apis',
+        ws: true,
+        changOrigin: true
+      }
+    }
   }
 }

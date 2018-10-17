@@ -11,7 +11,7 @@ const watch = () => {
 const clientHeight = window.document.body.clientHeight || window.document.documentElement.clientHeight
 
 export default {
-  bind(el, binding) {
+  bind (el, binding) {
     listenAction = throttle(() => {
       const offsetTop = el.getBoundingClientRect().top
       if (offsetTop <= clientHeight) {
@@ -22,13 +22,12 @@ export default {
       binding.value.show(show)
     })
 
-
     watch()
   },
 
   unbind: unwatch,
 
-  update(el, binding) {
+  update (el, binding) {
 
   }
 }
