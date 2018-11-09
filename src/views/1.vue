@@ -1,25 +1,37 @@
-<!--  -->
+<!-- 1 -->
 <template>
   <div></div>
 </template>
 
 <script>
 export default {
-  name: '',
-  data () {
-    return {
-    }
-  },
+  name: '1',
+
+  mixins: [],
 
   components: {},
 
+  props: {},
+
+  data () {
+    return {
+
+    }
+  },
   computed: {},
 
-  mounted () {},
+  watch: {},
+
+  created () {
+  },
+
+  mounted () { },
+
+  destroyed () { },
 
   methods: {}
 }
 
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
 </style>

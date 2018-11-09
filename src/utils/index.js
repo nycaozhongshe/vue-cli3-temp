@@ -44,3 +44,27 @@ export function registerModules (modules, store) {
     store.registerModule(key, modulesChunks[key])
   }
 }
+
+export function MP (ak) {
+  return new Promise(function (resolve, reject) {
+    window.onload = function () {
+      resolve(window.BMap)
+    }
+    if (!window.BMap) {
+      var script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.src = 'http://api.map.baidu.com/api?v=2.0&ak=' + ak + '&callback=init'
+      script.onerror = reject
+      document.head.appendChild(script)
+    }
+  })
+}
+
+export function lazdMap (ak) {
+  if (!window.BMap) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = 'http://api.map.baidu.com/api?v=2.0&ak=' + ak + '&callback=init'
+    document.head.appendChild(script)
+  }
+}

@@ -13,12 +13,13 @@ const externals = {
   'vue-router': 'VueRouter',
   'vuex': 'Vuex',
   'axios': 'axios',
-  'element-ui': 'ELEMENT'
+  'element-ui': 'ELEMENT',
+  'vue-lazyload': 'VueLazyload'
 }
 // CDN外链，会插入到index.html中
 const cdn = {
   css: [
-    'https://unpkg.com/element-ui/lib/theme-chalk/index.css'
+    // 'https://unpkg.com/element-ui/lib/theme-chalk/index.css'
   ],
   js: [
     'https://cdn.polyfill.io/v2/polyfill.min.js',
@@ -26,7 +27,8 @@ const cdn = {
     'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js',
     'https://cdn.jsdelivr.net/npm/vuex@3.0.1/dist/vuex.min.js',
     'https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js',
-    'https://unpkg.com/element-ui/lib/index.js'
+    'https://unpkg.com/element-ui/lib/index.js',
+    'https://unpkg.com/vue-lazyload/vue-lazyload.js'
   ]
 }
 // 需要预渲染的路由
@@ -120,7 +122,7 @@ module.exports = {
      * sass-resources-loader 文档链接：https://github.com/shakacode/sass-resources-loader
      */
     const oneOfsMap = config.module.rule('scss').oneOfs.store
-    const sassResources = ['color.scss', 'mixin.scss', 'reset.scss'] // scss资源文件，可以在里面定义变量，mixin,全局样式等
+    const sassResources = ['reset.scss', 'color.scss', 'mixin.scss'] // scss资源文件，可以在里面定义变量，mixin,全局样式等
     oneOfsMap.forEach(item => {
       item
         .use('sass-resources-loader')
@@ -134,6 +136,7 @@ module.exports = {
   devServer: {
     port: 8081,
     open: true,
+    hot: true,
     proxy: {
       '/api^^^': {
         target: 'http://后台给的地址/apis',

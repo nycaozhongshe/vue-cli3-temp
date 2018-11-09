@@ -115,7 +115,6 @@
 <script>
 // @ is an alias to /src
 import CountTo from 'vue-count-to'
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   data () {
@@ -126,11 +125,12 @@ export default {
   name: 'home',
   mounted () {
     setTimeout(() => {
+      console.log(1111)
+
       this.sdsdsad = true
     }, 4000)
   },
   components: {
-    HelloWorld,
     CountTo
   },
   metaInfo: {

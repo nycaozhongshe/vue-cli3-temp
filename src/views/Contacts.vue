@@ -1,5 +1,9 @@
 <template>
   <div class="wrap">
+
+    <button @click="switchLanguage('en')">切换英语</button><br>
+    <button @click="switchLanguage('cn')">切换汉语</button><br>
+    <p>{{$t('message.hello')}}</p>
     <el-table :data="tableData"
               v-loading="loading"
               border
@@ -50,7 +54,10 @@ export default {
         name: 'keyWords',
         content: 'My Example App'
       }
-    ]
+    ],
+    link: [{ // set link
+      src: 'https://api.map.baidu.com/api?v=2.0&ak=VBC48ThGEUWQpCOwjD4EAMHIOloi4AWS&s=1'
+    }]
   },
   data () {
     return {
@@ -70,7 +77,10 @@ export default {
   methods: {
     ...mapActions('contacts', {
       getTableData: 'getList'
-    })
+    }),
+    switchLanguage (language) {
+      this.$i18n.locale = language
+    }
   }
 }
 </script>

@@ -1,4 +1,3 @@
-
 @mixin button {
   display: inline-block;
   padding: 5px 10px;
@@ -6,7 +5,100 @@
   color: #fff;
   background: #409eff;
   cursor: pointer;
-  &:hover{
+  &:hover {
     background: #66b1ff;
   }
+}
+
+$legacy-support-for-ie:flase !default; //兼容ie
+$inline-block-alignment: middle !default; //设置一个默认的对齐方式
+// 提供一个跨浏览器的方法来实现`display:inline-block`
+@mixin inline-block($alignment: $inline-block-alignment) {
+  display: inline-block;
+  @if $alignment and $alignment !=none {
+    vertical-align: $alignment;
+  }
+  @if $legacy-support-for-ie {
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+  }
+}
+
+%inline-block {
+  @include inline-block;
+}
+
+// 提供一个跨浏览器的方法来实现`图片替换文字`
+@mixin Image-replacement {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  @if $legacy-support-for-ie {
+    *text-indent: -150%;
+  }
+  &:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+  }
+}
+
+%Image-replacement {
+  @include Image-replacement;
+}
+
+//明确的宽度、文本强制不换行和隐藏多余文本
+@mixin singleline-ellipsis($substract:0) {
+  //`$substract`单位为%
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100% - $substract;
+}
+
+%singleline-ellipsis {
+  @include singleline-ellipsis;
+}
+
+@mixin multiline-ellipsis($lines:2) {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+%multiline-ellipsis {
+  @include multiline-ellipsis;
+}
+
+//禁用樣式
+@mixin disabled($bgColor: #e6e6e6, $textColor:#ababab) {
+  background-color: $bgColor !important;
+  color: $textColor !important;
+  cursor: not-allowed !important;
+}
+
+%disabled {
+  @include disabled;
+}
+
+//最小宽度
+@mixin min-height($height) {
+  min-height: $height;
+  height: auto !important;
+  @if $legacy-support-for-ie {
+    _height: $height;
+  }
+}
+
+@mixin border( $border-color:$border-color, $border-width:1px) {
+  border: $border-width $border-color solid
+}
+
+%border {
+  @include border;
 }

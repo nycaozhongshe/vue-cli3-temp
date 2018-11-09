@@ -1,5 +1,8 @@
-/**
- * Created by jiachenpan on 16/11/18.
+/*
+ * @Author: caozhongshe
+ * @Date: 2018-10-23 10:15:22
+ * @Last Modified by: caozhongshe
+ * @Last Modified time: 2018-10-23 13:34:37
  */
 
 export function isvalidUsername (str) {

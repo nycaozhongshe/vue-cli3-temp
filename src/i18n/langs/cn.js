@@ -1,9 +1,8 @@
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
-const cn = {
-  message: {
-    'hello': '你好，世界'
-  },
-  ...zhLocale
-}
+import { getChunks } from '@/utils'
+const cnModel = require.context('./cn', true, /\.js$/)
+const cnChunks = getChunks(cnModel)
+
+const cn = Object.assign(zhLocale, cnChunks)
 
 export default cn
