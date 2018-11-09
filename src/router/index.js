@@ -15,8 +15,8 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: '/con',
-          name: 'con',
+          path: '/icon',
+          name: 'icon',
           component: () => import('@/views/Contacts.vue')
         }
       ]

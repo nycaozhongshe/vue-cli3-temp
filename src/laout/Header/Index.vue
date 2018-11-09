@@ -1,17 +1,24 @@
 <!--  -->
 <template>
   <el-header>
-    <el-menu :default-active="$route.path"
-             class="el-menu-demo"
-             mode="horizontal"
-             @select="handleSelect"
-             router>
-      <Menu-Item v-if="item.path"
-                 v-for="item in navLsit"
-                 :menu="item"
-                 :key="item.name">
-      </Menu-Item>
-    </el-menu>
+    <div class="header-content">
+      <div class="logo"></div>
+      <el-menu :default-active="$route.path"
+               class="header-nav"
+               mode="horizontal"
+               @select="handleSelect"
+               router>
+        <Menu-Item v-if="item.path"
+                   v-for="item in navLsit"
+                   :menu="item"
+                   :key="item.name">
+        </Menu-Item>
+      </el-menu>
+
+      <button @click="switchLanguage('en')">切换英语</button><br>
+      <button @click="switchLanguage('cn')">切换汉语</button><br>
+    </div>
+
   </el-header>
 </template>
 
@@ -40,10 +47,22 @@ export default {
 
   methods: {
     handleSelect (key, keyPath) {
+    },
+    switchLanguage (language) {
+      this.$i18n.locale = language
     }
   }
 }
 
 </script>
 <style lang='scss' scoped>
+.header-content {
+  display: flex;
+  .logo {
+    width: 200px;
+  }
+  .header-nav {
+    flex: 1;
+  }
+}
 </style>

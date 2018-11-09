@@ -1,5 +1,6 @@
 export default {
   'home': 'home',
   'contacts': 'contacts',
-  'map': 'map'
+  'map': 'map',
+  'icon': 'icon'
 }

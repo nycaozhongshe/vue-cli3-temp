@@ -7,14 +7,14 @@
     </i>
     <span v-if="!hc"
           slot="title">
-      {{menu.name}}
+      {{$t('router.'+menu.name)}}
     </span>
     <template slot="title"
               v-if="hc">
       <i :class="menu.icon"
          v-if="menu.icon">
       </i>
-      <span slot="title">{{menu.name}}</span>
+      <span slot="title">{{$t('router.'+menu.name)}}</span>
     </template>
     <!-- 这里用了递归生成菜单项 -->
     <menu-item v-for="child in menu.children"
