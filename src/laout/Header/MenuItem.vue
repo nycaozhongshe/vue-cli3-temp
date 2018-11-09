@@ -1,7 +1,8 @@
 <template>
   <component v-bind:is="currentItemComponent"
              :index="menu.path"
-             :key="menu.path">
+             :key="menu.path"
+             v-if="!menu.hidden">
     <i :class="menu.icon"
        v-if="menu.icon && !hc">
     </i>

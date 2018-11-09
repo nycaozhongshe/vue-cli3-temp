@@ -60,11 +60,17 @@ export function MP (ak) {
   })
 }
 
-export function lazdMap (ak) {
-  if (!window.BMap) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.src = 'http://api.map.baidu.com/api?v=2.0&ak=' + ak + '&callback=init'
-    document.head.appendChild(script)
+const langKey = '@@Slang'
+
+export function saveLang (lang) {
+  localStorage.setItem(langKey, lang)
+}
+
+export function getLang () {
+  let lang = localStorage.getItem(langKey)
+  if (lang === 'cn' || lang === 'en') {
+    return lang
+  } else {
+    return 'cn'
   }
 }

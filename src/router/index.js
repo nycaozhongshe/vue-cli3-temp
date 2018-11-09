@@ -30,6 +30,13 @@ export default new Router({
       path: '/map',
       name: 'map',
       component: () => import('@/views/Map.vue')
+    },
+    {
+      path: '/freshen',
+      name: 'freshen',
+      hidden: true,
+      component: () => import('@/views/Freshen/Index.vue')
     }
+
   ]
 })

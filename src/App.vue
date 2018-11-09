@@ -3,7 +3,7 @@
     <el-container direction="vertical">
       <Header></Header>
       <el-main>
-        <keep-alive>
+        <keep-alive v-if="isRouterAlive">
           <router-view />
         </keep-alive>
       </el-main>
@@ -16,24 +16,35 @@
 import Header from './laout/Header/Index.vue'
 import Footer from './laout/Footer/Index'
 export default {
-  data () {
+  provide () { // 注册一个方法
     return {
-      set: false
+      reload: this.reload
     }
   },
+
   components: {
     Header,
     Footer
   },
-  beforeCreate () { },
+  data () {
+    return {
+      set: false,
+      isRouterAlive: true
+    }
+  },
+
   created () { },
+
   mounted () { },
+
   methods: {
-    show (show) {
-      this.set = show
-      console.log(this.set)
-    },
-    outputDate () { }
+    reload () {
+      this.isRouterAlive = false
+      this.$nextTick(function () {
+        this.isRouterAlive = true
+      })
+    }
+
   }
 }
 </script>

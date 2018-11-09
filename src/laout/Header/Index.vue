@@ -24,9 +24,11 @@
 
 <script>
 import MenuItem from './MenuItem'
+import { saveLang } from '@/utils'
 
 export default {
   name: 'Header',
+  inject: ['reload'],
   data () {
     return {
     }
@@ -48,8 +50,16 @@ export default {
   methods: {
     handleSelect (key, keyPath) {
     },
+
     switchLanguage (language) {
       this.$i18n.locale = language
+      saveLang(language)
+      this.freshen()
+    },
+
+    freshen () {
+      // this.$router.replace('/freshen')
+      this.reload()
     }
   }
 }

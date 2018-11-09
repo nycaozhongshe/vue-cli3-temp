@@ -74,9 +74,6 @@ export default {
   methods: {
     initMap () {
       MP().then(BMap => {
-        let a = 24
-        console.log(a)
-
         var map
         let that = this
 
