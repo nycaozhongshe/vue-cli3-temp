@@ -3,10 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import MetaInfo from 'vue-meta-info'
-import i18n from './i18n/i18n.js'
-import showPage from './directive/show-page/index'
+// import i18n from './i18n/i18n.js'
 import VueLazyload from 'vue-lazyload'
-import VueProgressiveImage from 'vue-progressive-image'
+// import VueProgressiveImage from 'vue-progressive-image'
 import './style/element-variables.scss'
 import '@/router/permission'
 import '@/style/index.scss'
@@ -17,11 +16,10 @@ Vue.use(VueLazyload, {
   loading: `${baseUrl}imgs/common/loading.gif`
 })
 // 渐进式图片加载
-Vue.use(VueProgressiveImage, {
+// Vue.use(VueProgressiveImage, {
 
-})
+// })
 
-Vue.use(showPage)
 Vue.use(MetaInfo)
 Vue.use(VueLazyload)
 
@@ -30,6 +28,6 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  i18n,
+  // i18n,
   render: h => h(App)
 }).$mount('#app', true)

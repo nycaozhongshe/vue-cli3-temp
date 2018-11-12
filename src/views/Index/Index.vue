@@ -1,6 +1,13 @@
 <!-- Index -->
 <template>
-  <div></div>
+  <div>
+    <el-input placeholder="请输入内容"
+              v-model="input"
+              clearable>
+    </el-input>
+    <el-button type="primary"
+               @click="submit">submit</el-button>
+  </div>
 </template>
 
 <script>
@@ -15,7 +22,7 @@ export default {
 
   data () {
     return {
-
+      input: ''
     }
   },
   computed: {},
@@ -28,7 +35,14 @@ export default {
 
   destroyed () { },
 
-  methods: {}
+  methods: {
+    submit () {
+      this.$store
+        .dispatch('getCompanyCour', { companyName: this.input }).then((res) => {
+          console.log(res)
+        })
+    }
+  }
 }
 
 </script>

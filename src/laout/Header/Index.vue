@@ -1,79 +1,36 @@
-<!--  -->
+<!-- Header -->
 <template>
-  <el-header>
-    <div class="header-content">
-      <div class="logo"></div>
-      <el-menu :default-active="$route.path"
-               class="header-nav"
-               mode="horizontal"
-               @select="handleSelect"
-               router>
-        <Menu-Item v-if="item.path"
-                   v-for="item in navLsit"
-                   :menu="item"
-                   :key="item.name">
-        </Menu-Item>
-      </el-menu>
-
-      <button @click="switchLanguage('en')">切换英语</button><br>
-      <button @click="switchLanguage('cn')">切换汉语</button><br>
-    </div>
-
-  </el-header>
+  <div></div>
 </template>
 
 <script>
-import MenuItem from './MenuItem'
-import { saveLang, getLang } from '@/utils'
-
 export default {
   name: 'Header',
-  inject: ['reload'],
+
+  mixins: [],
+
+  components: {},
+
+  props: {},
+
   data () {
     return {
+
     }
   },
+  computed: {},
 
-  components: {
-    MenuItem
-  },
+  watch: {},
 
-  computed: {
-    navLsit () {
-      return this.$router.options.routes
-    }
-  },
+  created () { },
 
-  mounted () {
-  },
+  mounted () { },
 
-  methods: {
-    handleSelect (key, keyPath) {
-    },
+  destroyed () { },
 
-    switchLanguage (language) {
-      let lang = getLang()
-      if (lang === language) return
-      this.$i18n.locale = language
-      saveLang(language)
-      this.freshen()
-    },
-
-    freshen () {
-      this.reload()
-    }
-  }
+  methods: {}
 }
 
 </script>
 <style lang='scss' scoped>
-.header-content {
-  display: flex;
-  .logo {
-    width: 200px;
-  }
-  .header-nav {
-    flex: 1;
-  }
-}
 </style>

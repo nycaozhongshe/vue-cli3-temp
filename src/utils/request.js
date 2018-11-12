@@ -2,9 +2,9 @@
  * @Author: caozhongshe
  * @Date: 2018-08-14 15:25:55
  * @Last Modified by: caozhongshe
- * @Last Modified time: 2018-10-15 15:11:50
+ * @Last Modified time: 2018-11-12 16:46:24
  */
-import router from '../router'
+// import router from '../router/index'
 import axios from 'axios'
 import { Message } from 'element-ui'
 import { showFullScreenLoading, tryHideFullScreenLoading } from './loading'
@@ -15,20 +15,7 @@ export const service = axios.create({
 })
 
 let interceptor = response => {
-  if (response.data === 'INTERCEPT') {
-    Message.error('登陆超时')
-    router.replace({ path: 'login' })
-    return false
-  }
-  if (response.data.code === 1006) {
-    Message.error('密码错误')
-    return false
-  } else if (response.data.code !== 0) {
-    Message.error('服务繁忙')
-    return false
-  } else {
-    return true
-  }
+  return true
 }
 
 // request拦截器
@@ -59,7 +46,7 @@ service.interceptors.response.use(
   response => {
     tryHideFullScreenLoading()
     if (interceptor(response)) {
-      return response.data.data
+      return response.data
     } else {
       return Promise.reject(response.data)
     }

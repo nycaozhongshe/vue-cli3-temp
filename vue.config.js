@@ -7,6 +7,9 @@ const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const DIST_ROOT = 'dist'
 // 项目部署在服务器里的绝对路径，默认'/'，参考https://cli.vuejs.org/zh/config/#baseurl
 const BASE_URL = process.env.NODE_ENV === 'production' ? '/' : '/'
+
+console.log(process.env.NODE_ENV)
+
 // 转为CND外链方式的npm包，键名是import的npm包名，键值是该库暴露的全局变量，参考https://webpack.js.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx
 const externals = {
   'vue': 'Vue',
@@ -138,10 +141,12 @@ module.exports = {
     open: true,
     hot: true,
     proxy: {
-      '/api^^^': {
-        target: 'http://后台给的地址/apis',
-        ws: true,
-        changOrigin: true
+      '/api': {
+        target: 'http://erp.api.newairtek.com/api',
+        changeOrigin: true, // 是否跨域
+        pathRewrite: {
+          '^/api': '/' // 需要rewrite的,
+        }
       }
     }
   }
