@@ -1,147 +1,135 @@
+<!-- Home -->
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <div>asd</div>
-    <count-to class="card-panel-num"
-              :startVal="0"
-              :endVal="9280"
-              v-if="sdsdsad"
-              :duration="3200">
-    </count-to>
-
+  <div>
+    <button @click="today">今天</button>
+    <full-calendar :events="fcEvents"
+                   lang="zh"
+                   ref="fullCalendar"
+                   @changeMonth="changeMonth"
+                   @eventClick="eventClick"
+                   @dayClick="dayClick"
+                   @moreClick="moreClick">
+    </full-calendar>
   </div>
+
 </template>
 
 <script>
-// @ is an alias to /src
-import CountTo from 'vue-count-to'
 
-export default {
-  data () {
-    return {
-      sdsdsad: false
+const demoEvents = [
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-11-25',
+    end: '2018-11-30',
+    cssClass: 'family',
+    YOUR_DATA: {
+      data: 11,
+      data2: 2
     }
   },
-  name: 'home',
-  mounted () {
-    setTimeout(() => {
-      console.log(1111)
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-11-25',
+    end: '2018-11-30',
+    cssClass: 'family',
+    YOUR_DATA: {
+      data: 11,
+      data2: 2
+    }
+  },
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-11-25',
+    end: '2018-11-30',
+    cssClass: 'family',
+    YOUR_DATA: {
+      data: 11,
+      data2: 2
+    }
+  },
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-11-25',
+    end: '2018-11-30',
+    cssClass: 'family',
+    YOUR_DATA: {
+      data: 11,
+      data2: 2
+    }
+  },
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-11-25',
+    end: '2018-11-30',
+    cssClass: 'family',
+    YOUR_DATA: {
+      data: 11,
+      data2: 2
+    }
+  },
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-11-25',
+    end: '2018-11-30',
+    cssClass: 'family',
+    YOUR_DATA: {
+      data: 11,
+      data2: 2
+    }
+  }
 
-      this.sdsdsad = true
-    }, 4000)
-  },
+]
+export default {
+  name: 'Home',
+
+  mixins: [],
+
   components: {
-    CountTo
+    'full-calendar': require('vue-fullcalendar')
   },
-  metaInfo: {
-    title: 'My Example App', // set a title
-    meta: [
-      {
-        // set meta
-        name: 'keyWords',
-        content: 'My Example App'
-      }
-    ]
+
+  props: {},
+
+  data () {
+    return {
+      fcEvents: demoEvents
+    }
+  },
+  computed: {},
+
+  watch: {},
+
+  created () { },
+
+  mounted () {
+    console.log()
+  },
+
+  destroyed () { },
+
+  methods: {
+    today () {
+      this.$refs.fullCalendar.currentDate = new Date()
+      this.$refs.fullCalendar.$forceUpdate()
+    },
+    moreClick (date, events, jsEvent) {
+      console.log('moreClick', date, events, jsEvent)
+    },
+
+    dayClick (date, jsEvent) {
+      console.log('dayClick', date, jsEvent)
+    },
+
+    eventClick (date, jsEvent) {
+      console.log('eventClick', date, jsEvent)
+    },
+
+    changeMonth (start, end, current) {
+      console.log('changeMonth', start, end, current)
+    }
   }
 }
+
 </script>
+<style lang='scss' scoped>
+</style>

@@ -24,7 +24,7 @@
 
 <script>
 import MenuItem from './MenuItem'
-import { saveLang } from '@/utils'
+import { saveLang, getLang } from '@/utils'
 
 export default {
   name: 'Header',
@@ -52,13 +52,14 @@ export default {
     },
 
     switchLanguage (language) {
+      let lang = getLang()
+      if (lang === language) return
       this.$i18n.locale = language
       saveLang(language)
       this.freshen()
     },
 
     freshen () {
-      // this.$router.replace('/freshen')
       this.reload()
     }
   }

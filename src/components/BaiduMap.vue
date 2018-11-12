@@ -2,7 +2,6 @@
 <template>
   <div id="dituContent"
        :style="style">
-
   </div>
 </template>
 

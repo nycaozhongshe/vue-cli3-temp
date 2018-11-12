@@ -47,15 +47,20 @@ export function registerModules (modules, store) {
 
 export function MP (ak) {
   return new Promise(function (resolve, reject) {
-    window.onload = function () {
+    // eslint-disable-next-line
+    window.initMap = () => {
       resolve(window.BMap)
+      console.log('init map')
     }
+
     if (!window.BMap) {
       var script = document.createElement('script')
       script.type = 'text/javascript'
-      script.src = 'http://api.map.baidu.com/api?v=2.0&ak=' + ak + '&callback=init'
+      script.src = 'http://api.map.baidu.com/api?v=2.0&ak=' + ak + '&callback=initMap'
       script.onerror = reject
       document.head.appendChild(script)
+    } else {
+      resolve(window.BMap)
     }
   })
 }
