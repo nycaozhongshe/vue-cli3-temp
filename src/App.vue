@@ -2,6 +2,8 @@
   <div id="app">
     <el-container direction="vertical">
       <Header></Header>
+      <router-link to="/">/</router-link>
+      <router-link to="/contacts">contacts</router-link>
       <el-main>
         <keep-alive v-if="isRouterAlive">
           <router-view />
