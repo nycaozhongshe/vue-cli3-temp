@@ -9,22 +9,25 @@ import VueLazyload from 'vue-lazyload'
 // import './style/element-variables.scss'
 import '@/router/permission'
 import '@/style/index.scss'
+import elementUiOptions from '@/pluginConfig/elementUi'
 
-import elementUiComponent from '@/element-ui-component'
+import VueLazyloadOptions from '@/pluginConfig/vueLazyload.js'
 
-const baseUrl = process.env.BASE_URL
 // 懒加载
-Vue.use(VueLazyload, {
-  error: `${baseUrl}imgs/common/error.png`,
-  loading: `${baseUrl}imgs/common/loading.gif`
-})
+Vue.use(VueLazyload, VueLazyloadOptions)
+
 // 渐进式图片加载
 // Vue.use(VueProgressiveImage, {
 
 // })
-Vue.use(elementUiComponent)
+// 按需引入组件
+Vue.use(elementUiOptions)
+// seo
 Vue.use(MetaInfo)
-Vue.use(VueLazyload)
+
+const baseUrl = process.env.BASE_URL
+
+Vue.prototype.$baseUrl = baseUrl.substr(0, baseUrl.Length - 1)
 
 Vue.config.productionTip = false
 

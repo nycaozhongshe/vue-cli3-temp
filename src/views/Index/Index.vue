@@ -1,6 +1,9 @@
 <!-- Index -->
 <template>
   <div>
+    <img v-lazy="$baseUrl+'__imgs/common/timg.jpeg'"
+         alt="">
+
     <el-input placeholder="请输入内容"
               v-model="input"
               clearable>
@@ -22,7 +25,8 @@ export default {
 
   data () {
     return {
-      input: ''
+      input: '',
+      imgUrl: ''
     }
   },
   computed: {},
