@@ -6,9 +6,12 @@ import MetaInfo from 'vue-meta-info'
 // import i18n from './i18n/i18n.js'
 import VueLazyload from 'vue-lazyload'
 // import VueProgressiveImage from 'vue-progressive-image'
-import './style/element-variables.scss'
+// import './style/element-variables.scss'
 import '@/router/permission'
 import '@/style/index.scss'
+
+import elementUiComponent from '@/element-ui-component'
+
 const baseUrl = process.env.BASE_URL
 // 懒加载
 Vue.use(VueLazyload, {
@@ -19,7 +22,7 @@ Vue.use(VueLazyload, {
 // Vue.use(VueProgressiveImage, {
 
 // })
-
+Vue.use(elementUiComponent)
 Vue.use(MetaInfo)
 Vue.use(VueLazyload)
 
@@ -29,5 +32,9 @@ new Vue({
   router,
   store,
   // i18n,
-  render: h => h(App)
+  render: h => h(App),
+  /* 这句非常重要，否则预渲染将不会启动 */
+  mounted () {
+    document.dispatchEvent(new Event('render-event'))
+  }
 }).$mount('#app', true)
