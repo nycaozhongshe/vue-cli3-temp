@@ -4,16 +4,16 @@ import router from './router'
 import store from './store'
 // import MetaInfo from 'vue-meta-info'
 // import i18n from './i18n/i18n.js'
-import VueLazyload from 'vue-lazyload'
+// import VueLazyload from 'vue-lazyload'
 // import VueProgressiveImage from 'vue-progressive-image'
 import '@/router/permission'
 import '@/style/index.scss'
 import elementUiOptions from '@/pluginConfig/elementUi'
 
-import VueLazyloadOptions from '@/pluginConfig/vueLazyload.js'
+// import VueLazyloadOptions from '@/pluginConfig/vueLazyload.js'
 
 // 懒加载
-Vue.use(VueLazyload, VueLazyloadOptions)
+// Vue.use(VueLazyload, VueLazyloadOptions)
 
 // 渐进式图片加载
 // Vue.use(VueProgressiveImage, {

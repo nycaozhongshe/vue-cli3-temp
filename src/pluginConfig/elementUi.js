@@ -9,13 +9,14 @@ import {
   Loading,
   Message,
   // DatePicker,
-  Menu,
+  // Menu,
   Table,
   TableColumn,
-  Submenu,
-  MenuItem,
+  // Submenu,
+  // MenuItem,
   Breadcrumb,
-  BreadcrumbItem
+  BreadcrumbItem,
+  Cascader
 } from 'element-ui'
 const components = [
   Button,
@@ -29,9 +30,11 @@ const components = [
   Breadcrumb,
   BreadcrumbItem,
   // DatePicker,
-  Menu,
-  Submenu,
-  MenuItem
+  // Menu,
+  // Submenu,
+  Cascader
+
+  // MenuItem
 ]
 
 const install = function (Vue, opts = {}) {
