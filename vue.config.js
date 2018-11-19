@@ -31,7 +31,7 @@ const cdn = {
   ]
 }
 // 需要预渲染的路由
-const prerenderRoutes = ['/', '/contacts']
+const prerenderRoutes = ['/', '/abnormalDetail', '/courtDetail']
 // 是否使用gzip
 const productionGzip = true
 // 需要gzip压缩的文件后缀
