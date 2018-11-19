@@ -211,10 +211,10 @@ export default {
       this.$router.push({
         path,
         query: {
-          KeyNo: 'ac66f9d18c12d884e23b7c83bbad1c6b', // 测试功能
-          // KeyNo,
-          Name: '北京京东世纪贸易有限公司'// 测试功能
-          // Name
+          // KeyNo: 'ac66f9d18c12d884e23b7c83bbad1c6b', // 测试功能
+          KeyNo,
+          // Name: '北京京东世纪贸易有限公司'// 测试功能
+          Name
         }
       })
     }
