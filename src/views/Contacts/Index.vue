@@ -11,6 +11,9 @@
 <script>
 import { FullCalendar } from 'vue-full-calendar'
 import 'fullcalendar/dist/locale/zh-cn'
+
+import 'fullcalendar/dist/fullcalendar.css'
+
 var demoEvents = [
   {
     title: 'Sunny Out of Office',
@@ -111,5 +114,4 @@ export default {
 
 </script>
 <style lang='scss' scoped>
-@import '~fullcalendar/dist/fullcalendar.css';
 </style>

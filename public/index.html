@@ -2,23 +2,45 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="keywords" http-equiv="keywords" content="官网" />
-  <meta http-equiv="description" name="description" content="官网" />
-  <meta name="renderer" content="webkit" />
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-  <meta name="author" content="caozhongshe" />
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <meta http-equiv="content-type"
+        content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
+  <!-- 搜索引擎抓取 -->
+  <meta name="robots"
+        content="index,follow" />
+  <!-- 不让百度转码 -->
+  <meta http-equiv="Cache-Control"
+        content="no-siteapp" />
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+  <meta name="keywords"
+        http-equiv="keywords"
+        content="官网" />
+  <meta http-equiv="description"
+        name="description"
+        content="官网" />
+  <meta name="renderer"
+        content="webkit" />
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=Edge,chrome=1" />
+  <meta name="author"
+        content="caozhongshe" />
+  <link rel="icon"
+        href="<%= BASE_URL %>favicon.ico">
   <!-- 使用CDN加速的CSS文件，配置在vue.config.js下 -->
   <% for (var i in htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.css) { %>
-  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="preload" as="style">
-  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet">
+  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>"
+        rel="preload"
+        as="style">
+  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>"
+        rel="stylesheet">
   <% } %>
   <!-- 使用CDN加速的JS文件，配置在vue.config.js下 -->
   <% for (var i in htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.js) { %>
-  <link href="<%= htmlWebpackPlugin.options.cdn.js[i] %>" rel="preload" as="script">
+  <link href="<%= htmlWebpackPlugin.options.cdn.js[i] %>"
+        rel="preload"
+        as="script">
   <% } %>
   <title>vue-cli3-optimization</title>
 </head>

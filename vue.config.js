@@ -2,7 +2,7 @@ const path = require('path')
 const chalk = require('chalk')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 // 存放build结果的文件夹(主要是为了填prerender在配置了baseUrl后带来的坑,下面会说)
 const DIST_ROOT = 'dist'
 // 项目部署在服务器里的绝对路径，默认'/'，参考https://cli.vuejs.org/zh/config/#baseurl
@@ -83,7 +83,8 @@ module.exports = {
             )
             return renderedRoute
           }
-        })
+        }),
+        new BundleAnalyzerPlugin()
       ]
       // 2. 构建时开启gzip，降低服务器压缩对CPU资源的占用，服务器也要相应开启gzip
       productionGzip && myConfig.plugins.push(
