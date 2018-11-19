@@ -1,4 +1,4 @@
-<!--  -->
+<!-- Aside -->
 <template>
   <el-aside>
 
@@ -7,16 +7,28 @@
 
 <script>
 export default {
-  data () {
-    return {
-    }
-  },
+  name: 'Aside',
+
+  mixins: [],
 
   components: {},
 
+  props: {},
+
+  data () {
+    return {
+
+    }
+  },
   computed: {},
 
-  mounted () {},
+  watch: {},
+
+  created () { },
+
+  mounted () { },
+
+  destroyed () { },
 
   methods: {}
 }

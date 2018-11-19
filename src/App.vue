@@ -18,6 +18,7 @@
 import Header from './laout/Header/Index.vue'
 import Footer from './laout/Footer/Index'
 export default {
+  name: 'App',
   provide () { // 注册一个方法
     return {
       reload: this.reload

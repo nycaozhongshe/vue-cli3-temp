@@ -1,4 +1,4 @@
-<!--  -->
+<!-- Footer -->
 <template>
   <el-footer>
     <div>footer</div>
@@ -7,16 +7,28 @@
 
 <script>
 export default {
-  data () {
-    return {
-    }
-  },
+  name: 'Footer',
+
+  mixins: [],
 
   components: {},
 
+  props: {},
+
+  data () {
+    return {
+
+    }
+  },
   computed: {},
 
-  mounted () {},
+  watch: {},
+
+  created () { },
+
+  mounted () { },
+
+  destroyed () { },
 
   methods: {}
 }
