@@ -5,7 +5,10 @@ import {
   Header,
   Main,
   Footer,
-  Input
+  Input,
+  Loading,
+  Message,
+  DatePicker
 } from 'element-ui'
 
 const components = [
@@ -14,15 +17,17 @@ const components = [
   Header,
   Main,
   Footer,
-  Input
+  Input,
+  DatePicker
 ]
 
 const install = function (Vue, opts = {}) {
-  console.log(components)
-
   components.forEach(component => {
     Vue.component(component.name, component)
   })
+  Vue.use(Loading.directive)
+  Vue.prototype.$loading = Loading.service
+  Vue.prototype.$message = Message
 }
 
 export default {
