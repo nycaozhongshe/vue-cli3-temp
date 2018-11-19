@@ -1,16 +1,9 @@
-<!-- Contacts -->
+<!-- Date -->
 <template>
   <div>
-    Contacts
-    <el-input placeholder="Please input"
-              v-model="input">
-    </el-input>
-
-    <span class='hidden-xl-only'>
-      111
-    </span>
+    Date
     <br>
-    <el-date-picker v-model="value1"
+    <el-date-picker v-model.trim="value1"
                     type="date"
                     placeholder="选择日期">
     </el-date-picker>
@@ -21,7 +14,7 @@
 import { DatePicker } from 'element-ui'
 
 export default {
-  name: 'Contacts',
+  name: 'Date',
 
   mixins: [],
 

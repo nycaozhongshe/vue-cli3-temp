@@ -19,6 +19,12 @@ export default new Router({
       path: '/contacts',
       name: 'contacts',
       component: () => import('@/views/Contacts/Index.vue')
+    },
+
+    {
+      path: '/date',
+      name: 'date',
+      component: () => import('@/views/Date/Index.vue')
     }
 
   ]

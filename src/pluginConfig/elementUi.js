@@ -8,7 +8,10 @@ import {
   Input,
   Loading,
   Message,
-  DatePicker
+  // DatePicker,
+  Menu,
+  Submenu,
+  MenuItem
 } from 'element-ui'
 
 const components = [
@@ -18,7 +21,10 @@ const components = [
   Main,
   Footer,
   Input,
-  DatePicker
+  // DatePicker,
+  Menu,
+  Submenu,
+  MenuItem
 ]
 
 const install = function (Vue, opts = {}) {
