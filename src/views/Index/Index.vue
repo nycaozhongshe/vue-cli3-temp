@@ -18,12 +18,14 @@
       <el-input class="input"
                 v-model.trim="input"
                 placeholder="请输入内容"
+                @keyup.enter="submit"
                 clearable>
       </el-input>
       <el-button class="submit"
                  type="primary"
                  size="small"
-                 @click="submit">
+                 @click="submit"
+                 :disabled="loading">
         查询
       </el-button>
       <el-button size="small"
@@ -35,6 +37,9 @@
                   border
                   stripe
                   style="width: 100%">
+          <el-table-column type="index"
+                           width="50">
+          </el-table-column>
           <el-table-column prop="Name"
                            label="公司名">
           </el-table-column>
@@ -109,10 +114,11 @@ export default {
 
   methods: {
     submit () {
+      if (this.loading) return
       if (this.input) {
         this.loading = true
 
-        let params = { keyword: this.input, pageIndex: 1, pageSize: 10 }
+        let params = { keyword: this.input, pageIndex: 1, pageSize: 20 }
         // 添加省市编码
         if (this.selectedOptions.length === 1) {
           params.ProvinceCode = this.selectedOptions[0]
