@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <el-container direction="vertical">
-      <Header></Header>
+      <!-- <Header></Header> -->
       <el-main>
         <keep-alive v-if="isRouterAlive">
           <router-view />
         </keep-alive>
       </el-main>
-      <Footer style="height:auto;"></Footer>
+      <!-- <Footer style="height:auto;"></Footer> -->
     </el-container>
   </div>
 </template>
 
 <script>
-import Header from './laout/Header/Index.vue'
-import Footer from './laout/Footer/Index'
+// import Header from './laout/Header/Index.vue'
+// import Footer from './laout/Footer/Index'
 export default {
   name: 'App',
   provide () { // 注册一个方法
@@ -24,8 +24,8 @@ export default {
   },
 
   components: {
-    Header,
-    Footer
+    // Header,
+    // Footer
   },
   data () {
     return {

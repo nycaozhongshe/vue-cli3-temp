@@ -2,7 +2,7 @@
  * @Author: caozhongshe
  * @Date: 2018-08-14 15:25:55
  * @Last Modified by: caozhongshe
- * @Last Modified time: 2018-11-16 14:38:09
+ * @Last Modified time: 2018-11-19 14:05:52
  */
 // import router from '../router/index'
 import axios from 'axios'
@@ -22,20 +22,20 @@ let interceptor = response => {
 service.interceptors.request.use(
   config => {
     if (config.showLoading) {
+      console.log('showLoading')
       showFullScreenLoading()
     }
     config.data = JSON.stringify(config.data)
     config.headers = { 'Content-Type': 'application/json' }
-    Object.assign(config.headers, {
-      token: localStorage.getItem('t') || null
-    })
-    Object.assign(config.headers, {
-      userId: localStorage.getItem('userId') || null
-    })
+    // Object.assign(config.headers, {
+    //   token: localStorage.getItem('t') || null
+    // })
+    // Object.assign(config.headers, {
+    //   userId: localStorage.getItem('userId') || null
+    // })
     return config
   },
   error => {
-    // Do something with request error
     console.log(error) // for debug
     return Promise.reject(error)
   }
@@ -54,11 +54,6 @@ service.interceptors.response.use(
   error => {
     tryHideFullScreenLoading()
     console.log('err' + error) // for debug
-    if (error === 'Cancel') {
-      error = {
-        message: '重复提交'
-      }
-    }
     Message({
       message: error.message || error,
       type: 'error',

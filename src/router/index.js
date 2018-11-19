@@ -16,16 +16,15 @@ export default new Router({
     },
 
     {
-      path: '/contacts',
-      name: 'contacts',
-      component: () => import('@/views/Contacts/Index.vue')
+      path: '/abnormalDetail',
+      name: 'abnormalDetail',
+      component: () => import('@/views/AbnormalDetail/Index.vue')
     },
 
     {
-      path: '/date',
-      name: 'date',
-      component: () => import('@/views/Date/Index.vue')
+      path: '/courtDetail',
+      name: 'courtDetail',
+      component: () => import('@/views/CourtDetail/Index.vue')
     }
-
   ]
 })
