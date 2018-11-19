@@ -2,5 +2,6 @@ export default {
   'index': 'home',
   'contacts': 'contacts',
   'map': 'map',
-  'icon': 'icon'
+  'icon': 'icon',
+  'date': 'date'
 }
