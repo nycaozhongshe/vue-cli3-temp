@@ -14,6 +14,9 @@
                   border
                   stripe
                   style="width: 100%">
+          <el-table-column type="index"
+                           width="50">
+          </el-table-column>
           <el-table-column v-for="(item,index) in col"
                            :key="index"
                            :prop="item.prop"
