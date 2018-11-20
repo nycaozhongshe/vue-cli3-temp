@@ -8,14 +8,18 @@
     </Full-Calendar>
     <!-- 新建编辑窗口 -->
     <el-dialog :title="editTitle"
-               :visible.sync="dialogFormVisible">
-      <el-form :model="form">
+               :visible.sync="dialogFormVisible"
+               @close="beforeClose">
+      <el-form :model="form"
+               ref="form">
         <el-form-item label="活动名称"
-                      :label-width="formLabelWidth">
+                      :label-width="formLabelWidth"
+                      prop='name'>
           <el-input v-model="form.name"
                     autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="活动区域"
+                      prop='region'
                       :label-width="formLabelWidth">
           <el-select v-model="form.region"
                      placeholder="请选择活动区域">
@@ -26,6 +30,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="活动时间"
+                      prop='date'
                       :label-width="formLabelWidth">
           <el-date-picker v-model="form.date"
                           type="datetimerange"
@@ -70,6 +75,8 @@
       </el-card>
     </div>
 
+    <Tree-Trans></Tree-Trans>
+
   </div>
 </template>
 
@@ -79,6 +86,7 @@ import 'fullcalendar/dist/locale/zh-cn'
 
 import 'fullcalendar/dist/fullcalendar.css'
 
+import TreeTrans from './TreeTrans'
 // color eventColor 作用一样，设置事件的背景色和边框。
 // backgroundColor  eventBackgroundColor 作用一样，设置事件的背景色。
 // borderColor eventBorderColor 作用一样，设置事件的边框。
@@ -87,8 +95,8 @@ import 'fullcalendar/dist/fullcalendar.css'
 var demoEvents = [
   {
     title: '<span>Sunny Out of Office</span>',
-    start: '2018-10-25',
-    end: '2018-11-11',
+    start: '2018-10-25 15:29:00',
+    end: '2018-11-11 15:29:00',
     color: '#ad111a'
   },
   {
@@ -131,7 +139,8 @@ export default {
   mixins: [],
 
   components: {
-    FullCalendar
+    FullCalendar,
+    TreeTrans
   },
 
   props: {},
@@ -155,6 +164,12 @@ export default {
         locale: 'zh-cn',
         defaultView: 'month', // 默认视图
         contentHeight: 'auto', // 设置高度
+        // theme: true,
+
+        // allDayDefault: false,
+        // allDaySlot: true,
+        // allDayText: '全天',
+        // timeFormat: 'HH:mm', // 设置的是添加的具体的日程上显示的时间
         header: {
           left: 'title', // 上一页、下一页、今天
           center: 'month,listMonth,myCustomButton', // 居中：时间范围区间标题
@@ -199,7 +214,8 @@ export default {
         // 点击天触发的回调
         dayClick: function (date, jsEvent, view) {
           console.log(view)
-
+          that.dialogFormVisible = true
+          that.editTitle = '新建活动'
           // alert('Clicked on: ' + date.format())
           // alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY)
           // alert('Current view: ' + view.name)
@@ -242,7 +258,15 @@ export default {
 
   destroyed () { },
 
-  methods: {}
+  methods: {
+    beforeClose (done) {
+      this.$refs.form.resetFields()
+      console.log(this.$refs.form)
+      console.log(this.form)
+
+      done()
+    }
+  }
 }
 
 </script>

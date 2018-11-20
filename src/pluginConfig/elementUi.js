@@ -12,8 +12,9 @@ import {
   Input,
   Select,
   Option,
-  Card
-
+  Card,
+  Transfer,
+  Tree
   // Header,
   // Footer,
   // Menu,
@@ -25,6 +26,7 @@ import {
   // BreadcrumbItem,
   // Cascader
 } from 'element-ui'
+
 const components = [
   Form,
   FormItem,
@@ -36,7 +38,11 @@ const components = [
   Input,
   Select,
   Option,
-  Card
+  Card,
+  Transfer,
+  Tree
+
+  // Transfer
   // Header,
   // Footer
   // Table,
