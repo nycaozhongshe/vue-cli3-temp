@@ -238,7 +238,8 @@
   z-index: 2000;
   font-size: 12px;
   line-height: 1.2;
-  min-width: 10px; }
+  min-width: 10px;
+  word-wrap: break-word; }
   .el-tooltip__popper .popper__arrow,
   .el-tooltip__popper .popper__arrow::after {
     position: absolute;

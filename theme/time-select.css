@@ -636,9 +636,9 @@
   line-height: 1; }
 
 .el-range-editor.is-active {
-  border-color: #409EFF; }
+  border-color: #ad111a; }
   .el-range-editor.is-active:hover {
-    border-color: #409EFF; }
+    border-color: #ad111a; }
 
 .el-range-editor--medium.el-input__inner {
   height: 36px; }
@@ -683,14 +683,14 @@
   line-height: 20px; }
 
 .el-range-editor.is-disabled {
-  background-color: #f5f7fa;
+  background-color: #f0e7e8;
   border-color: #e4e7ed;
   color: #c0c4cc;
   cursor: not-allowed; }
   .el-range-editor.is-disabled:hover, .el-range-editor.is-disabled:focus {
     border-color: #e4e7ed; }
   .el-range-editor.is-disabled input {
-    background-color: #f5f7fa;
+    background-color: #f0e7e8;
     color: #c0c4cc;
     cursor: not-allowed; }
     .el-range-editor.is-disabled input::-webkit-input-placeholder {
@@ -1078,10 +1078,10 @@
     outline: none;
     cursor: pointer; }
     .el-picker-panel__shortcut:hover {
-      color: #409EFF; }
+      color: #ad111a; }
     .el-picker-panel__shortcut.active {
       background-color: #e6f1fe;
-      color: #409EFF; }
+      color: #ad111a; }
   .el-picker-panel__btn {
     border: 1px solid #dcdcdc;
     color: #333;
@@ -1104,7 +1104,7 @@
     outline: none;
     margin-top: 8px; }
     .el-picker-panel__icon-btn:hover {
-      color: #409EFF; }
+      color: #ad111a; }
     .el-picker-panel__icon-btn.is-disabled {
       color: #bbb; }
       .el-picker-panel__icon-btn.is-disabled:hover {
@@ -1173,9 +1173,9 @@
     cursor: pointer;
     color: #606266; }
     .el-date-picker__header-label:hover {
-      color: #409EFF; }
+      color: #ad111a; }
     .el-date-picker__header-label.active {
-      color: #409EFF; }
+      color: #ad111a; }
   .el-date-picker__prev-btn {
     float: left; }
   .el-date-picker__next-btn {
@@ -1787,7 +1787,7 @@
   line-height: 20px; }
 
 .time-select-item.selected:not(.disabled) {
-  color: #409EFF;
+  color: #ad111a;
   font-weight: bold; }
 
 .time-select-item.disabled {
@@ -1795,6 +1795,6 @@
   cursor: not-allowed; }
 
 .time-select-item:hover {
-  background-color: #f5f7fa;
+  background-color: #f0e7e8;
   font-weight: bold;
   cursor: pointer; }

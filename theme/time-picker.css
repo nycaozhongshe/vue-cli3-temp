@@ -526,9 +526,9 @@
   line-height: 1; }
 
 .el-range-editor.is-active {
-  border-color: #409EFF; }
+  border-color: #ad111a; }
   .el-range-editor.is-active:hover {
-    border-color: #409EFF; }
+    border-color: #ad111a; }
 
 .el-range-editor--medium.el-input__inner {
   height: 36px; }
@@ -573,14 +573,14 @@
   line-height: 20px; }
 
 .el-range-editor.is-disabled {
-  background-color: #f5f7fa;
+  background-color: #f0e7e8;
   border-color: #e4e7ed;
   color: #c0c4cc;
   cursor: not-allowed; }
   .el-range-editor.is-disabled:hover, .el-range-editor.is-disabled:focus {
     border-color: #e4e7ed; }
   .el-range-editor.is-disabled input {
-    background-color: #f5f7fa;
+    background-color: #f0e7e8;
     color: #c0c4cc;
     cursor: not-allowed; }
     .el-range-editor.is-disabled input::-webkit-input-placeholder {
@@ -738,10 +738,10 @@
     outline: none;
     cursor: pointer; }
     .el-picker-panel__shortcut:hover {
-      color: #409EFF; }
+      color: #ad111a; }
     .el-picker-panel__shortcut.active {
       background-color: #e6f1fe;
-      color: #409EFF; }
+      color: #ad111a; }
   .el-picker-panel__btn {
     border: 1px solid #dcdcdc;
     color: #333;
@@ -764,7 +764,7 @@
     outline: none;
     margin-top: 8px; }
     .el-picker-panel__icon-btn:hover {
-      color: #409EFF; }
+      color: #ad111a; }
     .el-picker-panel__icon-btn.is-disabled {
       color: #bbb; }
       .el-picker-panel__icon-btn.is-disabled:hover {
@@ -935,7 +935,7 @@
   line-height: 30px;
   cursor: pointer; }
   .el-time-spinner__arrow:hover {
-    color: #409EFF; }
+    color: #ad111a; }
   .el-time-spinner__arrow.el-icon-arrow-up {
     top: 10px; }
   .el-time-spinner__arrow.el-icon-arrow-down {
@@ -964,7 +964,7 @@
   font-size: 12px;
   color: #606266; }
   .el-time-spinner__item:hover:not(.disabled):not(.active) {
-    background: #f5f7fa;
+    background: #f0e7e8;
     cursor: pointer; }
   .el-time-spinner__item.active:not(.disabled) {
     color: #303133;
@@ -1097,7 +1097,9 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
   .el-time-panel__content {
     font-size: 0;
     position: relative;
@@ -1149,7 +1151,7 @@
     color: #303133; }
     .el-time-panel__btn.confirm {
       font-weight: 800;
-      color: #409EFF; }
+      color: #ad111a; }
 
 /* Element Chalk Variables */
 /* Transition
@@ -1530,7 +1532,7 @@
     color: #606266;
     background-color: #fff;
     background-image: none;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #c7c7c7;
     border-radius: 4px;
     -webkit-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
@@ -1544,9 +1546,9 @@
       border-color: #c0c4cc; }
     .el-textarea__inner:focus {
       outline: none;
-      border-color: #409EFF; }
+      border-color: #ad111a; }
   .el-textarea.is-disabled .el-textarea__inner {
-    background-color: #f5f7fa;
+    background-color: #f0e7e8;
     border-color: #e4e7ed;
     color: #c0c4cc;
     cursor: not-allowed; }
@@ -1592,7 +1594,7 @@
     background-color: #fff;
     background-image: none;
     border-radius: 4px;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #c7c7c7;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     color: #606266;
@@ -1615,7 +1617,7 @@
       border-color: #c0c4cc; }
     .el-input__inner:focus {
       outline: none;
-      border-color: #409EFF; }
+      border-color: #ad111a; }
   .el-input__suffix {
     position: absolute;
     height: 100%;
@@ -1654,9 +1656,9 @@
     pointer-events: none; }
   .el-input.is-active .el-input__inner {
     outline: none;
-    border-color: #409EFF; }
+    border-color: #ad111a; }
   .el-input.is-disabled .el-input__inner {
-    background-color: #f5f7fa;
+    background-color: #f0e7e8;
     border-color: #e4e7ed;
     color: #c0c4cc;
     cursor: not-allowed; }
@@ -1704,12 +1706,12 @@
     vertical-align: middle;
     display: table-cell; }
   .el-input-group__append, .el-input-group__prepend {
-    background-color: #f5f7fa;
+    background-color: #f0e7e8;
     color: #909399;
     vertical-align: middle;
     display: table-cell;
     position: relative;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #c7c7c7;
     border-radius: 4px;
     padding: 0 20px;
     width: 1px;

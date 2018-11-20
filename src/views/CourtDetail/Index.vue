@@ -135,7 +135,11 @@ export default {
             this.tableData = Result
           } else {
             this.tableData = []
-            this.$message(Message)
+            this.$message({
+              message: Message,
+              type: 'warning',
+              duration: 1.5
+            })
           }
 
           //

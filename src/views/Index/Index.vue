@@ -18,7 +18,7 @@
       <el-input class="input"
                 v-model.trim="input"
                 placeholder="请输入内容"
-                @keyup.enter="submit"
+                @keyup.enter.native="submit"
                 clearable>
       </el-input>
       <el-button class="submit"
@@ -29,7 +29,9 @@
         查询
       </el-button>
       <el-button size="small"
-                 @click="clear">清空</el-button>
+                 @click="clear">
+        清空
+      </el-button>
     </div>
     <div class="result__warpper">
       <template>
@@ -65,11 +67,15 @@
             <template slot-scope="scope">
               <el-button @click="handleClickCourt(scope.row)"
                          type="text"
-                         size="small">法院公告</el-button>
+                         size="small">
+                法院公告
+              </el-button>
               <br>
               <el-button @click="handleClickAbnormal(scope.row)"
                          size="small"
-                         type="text">经营异常</el-button>
+                         type="text">
+                经营异常
+              </el-button>
             </template>
           </el-table-column>
         </el-table>

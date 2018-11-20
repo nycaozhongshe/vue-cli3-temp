@@ -293,11 +293,13 @@
     left: 0;
     top: 0;
     height: 100%;
-    background-color: #409EFF;
+    background-color: #ad111a;
     text-align: right;
     border-radius: 100px;
     line-height: 1;
-    white-space: nowrap; }
+    white-space: nowrap;
+    -webkit-transition: width 0.6s ease;
+    transition: width 0.6s ease; }
     .el-progress-bar__inner::after {
       display: inline-block;
       content: "";
