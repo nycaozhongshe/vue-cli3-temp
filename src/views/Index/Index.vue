@@ -1,111 +1,153 @@
-<!-- Index -->
+
+<!-- Contacts -->
 <template>
-  <div class="index__warpper">
-    <!-- <img v-lazy="$baseUrl+'__imgs/common/timg.jpeg'"
-         alt=""> -->
-
-    <div class="search__warper">
-
-      <el-cascader class="city"
-                   v-model="selectedOptions"
-                   placeholder="请选择省份或者城市"
-                   :options="cityOptions"
-                   :props="props"
-                   filterable
-                   change-on-select>
-      </el-cascader>
-
-      <el-input class="input"
-                v-model.trim="input"
-                placeholder="请输入内容"
-                @keyup.enter.native="submit"
-                clearable>
-      </el-input>
-      <el-button class="submit"
-                 type="primary"
-                 size="small"
-                 @click="submit"
-                 :disabled="loading">
-        查询
-      </el-button>
-      <el-button size="small"
-                 @click="clear">
-        清空
-      </el-button>
-    </div>
-    <div class="result__warpper">
-      <template>
-        <el-table :data="tableData"
-                  border
-                  stripe
-                  style="width: 100%">
-          <el-table-column type="index"
-                           width="50">
-          </el-table-column>
-          <el-table-column prop="Name"
-                           label="公司名">
-          </el-table-column>
-
-          <el-table-column prop="OperName"
-                           label="法人">
-          </el-table-column>
-          <el-table-column prop="Status"
-                           label="运营状态">
-          </el-table-column>
-          <el-table-column prop="StartDate"
-                           label="注册时间">
-          </el-table-column>
-          <el-table-column prop="KeyNo"
-                           label="编号">
-          </el-table-column>
-          <el-table-column prop="CreditCode"
-                           label="统一社会信用代码">
-          </el-table-column>
-          <el-table-column fixed="right"
-                           label="查询操作"
-                           width="120">
-            <template slot-scope="scope">
-              <el-button @click="handleClickCourt(scope.row)"
-                         type="text"
-                         size="small">
-                法院公告
-              </el-button>
-              <br>
-              <el-button @click="handleClickAbnormal(scope.row)"
-                         size="small"
-                         type="text">
-                经营异常
-              </el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-      </template>
-    </div>
+  <div class="full-calendar__wrpper">
+    <Full-Calendar :events="fcEvents"
+                   :config="config"
+                   :color="color">
+    </Full-Calendar>
+    <!-- 新建编辑窗口 -->
+    <el-dialog title="新建活动"
+               :visible.sync="dialogFormVisible">
+      <el-form :model="form">
+        <el-form-item label="活动名称"
+                      :label-width="formLabelWidth">
+          <el-input v-model="form.name"
+                    autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="活动区域"
+                      :label-width="formLabelWidth">
+          <el-select v-model="form.region"
+                     placeholder="请选择活动区域">
+            <el-option label="区域一"
+                       value="shanghai"></el-option>
+            <el-option label="区域二"
+                       value="beijing"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="活动时间"
+                      :label-width="formLabelWidth">
+          <el-date-picker v-model="form.date"
+                          type="datetimerange"
+                          align="right"
+                          start-placeholder="开始日期"
+                          end-placeholder="结束日期"
+                          :default-time="['12:00:00', '12:00:00']">
+          </el-date-picker>
+        </el-form-item>
+      </el-form>
+      <div slot="footer"
+           class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">
+          取 消
+        </el-button>
+        <el-button type="primary"
+                   @click="dialogFormVisible = false">
+          确 定
+        </el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import cityOptions from '@/utils/city.js'
+import { FullCalendar } from 'vue-full-calendar'
+import 'fullcalendar/dist/locale/zh-cn'
+
+import 'fullcalendar/dist/fullcalendar.css'
+
+var demoEvents = [
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-10-25',
+    end: '2018-11-11',
+    color: '#409EFF'
+  },
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-10-25',
+    end: '2018-11-11',
+    color: '#409EFF'
+  },
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-10-25',
+    end: '2018-11-11',
+    color: '#409EFF'
+  },
+  {
+    title: 'Sunny Out of Office',
+    start: '2018-10-25',
+    end: '2018-11-11',
+    color: '#409EFF'
+  }, {
+    title: 'Sunny Out of Office',
+    start: '2018-10-25',
+    end: '2018-11-11',
+    color: '#409EFF'
+  }, {
+    title: 'Sunny Out of Office',
+    start: '2018-10-25',
+    end: '2018-11-11',
+    color: '#409EFF'
+  }, {
+    title: 'Sunny Out of Office',
+    start: '2018-10-25',
+    end: '2018-11-11',
+    color: '#ccc'
+  }
+]
 export default {
-  name: 'Index',
+  name: 'Contacts',
 
   mixins: [],
 
-  components: {},
+  components: {
+    FullCalendar
+  },
 
   props: {},
 
   data () {
+    let that = this
     return {
-      input: '',
-      cityOptions: cityOptions,
-      selectedOptions: [],
-      loading: false,
-      props: {
-        value: 'Code',
-        label: 'City'
-      },
-      tableData: []
+      dialogFormVisible: false,
+      formLabelWidth: '120px',
+      form: {},
+      fcEvents: demoEvents,
+      config: {
+        locale: 'zh-cn',
+        defaultView: 'month',
+        header: {
+          left: 'title', // 上一页、下一页、今天
+          center: 'month,listMonth,myCustomButton,', // 居中：时间范围区间标题
+          // agendaWeek,agendaDay,
+          right: 'today,prev,next' // 右边：显示哪些视图
+        },
+        customButtons: { // 自定义header属性中按钮[customButtons与header并用]
+          myCustomButton: {
+            text: '新建',
+            click: function () {
+              that.dialogFormVisible = true
+              console.log(that.color)
+            }
+          }
+        },
+        eventLimit: true,
+        eventLimitText: '更多',
+        weekNumbers: true,
+        fixedWeekCount: true,
+        color: '#409EFF', // an option!
+        // textColor: 'black', // an option!
+        // aspectRatio: 1,
+        weekends: true,
+        noEventsMessage: '没数据啊',
+        drop (...args) {
+          console.log(args)
+
+          // handle drop logic in parent
+        }
+      }
     }
   },
   computed: {},
@@ -118,89 +160,102 @@ export default {
 
   destroyed () { },
 
-  methods: {
-    submit () {
-      if (this.loading) return
-      if (this.input) {
-        this.loading = true
-
-        let params = { keyword: this.input, pageIndex: 1, pageSize: 20 }
-        // 添加省市编码
-        if (this.selectedOptions.length === 1) {
-          params.ProvinceCode = this.selectedOptions[0]
-        } else if (this.selectedOptions.length === 2) {
-          params.ProvinceCode = this.selectedOptions[0]
-          params.cityCode = this.selectedOptions[1]
-        }
-        this.$store
-          .dispatch('getCompany', params).then((res) => {
-            this.loading = false
-
-            let { Status, Result } = res
-
-            if (Status === '200') {
-              this.tableData = Result
-            } else if (Status === '201') {
-              this.tableData = []
-              this.$message('暂无公司信息')
-            }
-          }).catch((error) => {
-            console.log(error.Message)
-          })
-      } else {
-        this.loading = false
-        this.$message.warning('内容不能为空')
-      }
-    },
-
-    handleClickAbnormal (row) {
-      this.gotoPage('/AbnormalDetail', row.KeyNo, row.Name)
-    },
-
-    handleClickCourt (row) {
-      this.gotoPage('/CourtDetail', row.KeyNo, row.Name)
-    },
-
-    gotoPage (path, KeyNo, Name) {
-      this.$router.push({
-        path,
-        query: {
-          // KeyNo: 'ac66f9d18c12d884e23b7c83bbad1c6b', // 测试功能
-          KeyNo,
-          // Name: '北京京东世纪贸易有限公司'// 测试功能
-          Name
-        }
-      })
-    },
-
-    clear () {
-      this.input = ''
-      this.selectedOptions = []
-    }
-  }
+  methods: {}
 }
 
 </script>
-<style lang='scss' scoped>
-.index__warpper {
-  // padding: 20px;
-  .search__warper {
-    width: 100%;
-    padding-left: 30%;
-    display: flex;
-    align-items: center;
-    .city {
-      margin-right: 10px;
-    }
-    .input {
-      flex: 1;
-    }
-    .submit {
-      margin-left: 30px;
-    }
+<style lang='scss' >
+.full-calendar__wrpper {
+  .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 2em;
   }
-  .result__warpper {
-    margin-top: 20px;
+  .fc-button {
+    text-shadow: none;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #c7c7c7;
+    border-color: #c7c7c7;
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    height: auto;
+  }
+
+  .fc-button + .fc-button {
+    margin-left: 10px;
+  }
+
+  .fc-button.is-round {
+    padding: 12px 20px;
+  }
+
+  .fc-button:hover,
+  .fc-button:focus {
+    color: #ad111a;
+    border-color: #e6b8ba;
+    background-color: #f7e7e8;
+  }
+
+  .fc-button:active {
+    color: #9c0f17;
+    border-color: #9c0f17;
+    outline: none;
+  }
+
+  .fc-button.fc-state-disabled,
+  .fc-button.fc-state-disabled:hover,
+  .fc-button.fc-state-disabled:focus {
+    color: #c0c4cc;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #fff;
+    border-color: #ebeef5;
+  }
+
+  .fc-button.fc-state-disabled.fc-button--text {
+    background-color: transparent;
+  }
+
+  .fc-myCustomButton-button {
+    color: #fff;
+    background-color: #ad111a;
+    border-color: #ad111a;
+  }
+
+  .fc-myCustomButton-button:hover,
+  .fc-myCustomButton-button:focus {
+    background: #bd4148;
+    border-color: #bd4148;
+    color: #fff;
+  }
+
+  .fc-myCustomButton-button:active {
+    background: #9c0f17;
+    border-color: #9c0f17;
+    color: #fff;
+    outline: none;
+  }
+
+  .fc-myCustomButton-button.is-active {
+    background: #9c0f17;
+    border-color: #9c0f17;
+    color: #fff;
   }
 }
 </style>

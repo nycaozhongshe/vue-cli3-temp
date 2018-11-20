@@ -2,38 +2,48 @@
 import {
   Button,
   Container,
-  Header,
   Main,
-  Footer,
-  Input,
+  Dialog,
+  Form,
+  FormItem,
   Loading,
   Message,
-  // DatePicker,
+  DatePicker,
+  Input,
+  Select,
+  Option
+
+  // Header,
+  // Footer,
   // Menu,
-  Table,
-  TableColumn,
+  // Table,
+  // TableColumn,
   // Submenu,
   // MenuItem,
-  Breadcrumb,
-  BreadcrumbItem,
-  Cascader
+  // Breadcrumb,
+  // BreadcrumbItem,
+  // Cascader
 } from 'element-ui'
 const components = [
+  Form,
+  FormItem,
   Button,
+  Dialog,
   Container,
-  Header,
+  DatePicker,
   Main,
-  Footer,
-  Table,
-  TableColumn,
   Input,
-  Breadcrumb,
-  BreadcrumbItem,
-  // DatePicker,
+  Select,
+  Option
+  // Header,
+  // Footer
+  // Table,
+  // TableColumn,
+  // Breadcrumb,
+  // BreadcrumbItem,
   // Menu,
   // Submenu,
-  Cascader
-
+  // Cascader
   // MenuItem
 ]
 

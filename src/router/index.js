@@ -13,18 +13,7 @@ export default new Router({
       path: '/',
       name: 'index',
       component: () => import('@/views/Index/Index.vue')
-    },
-
-    {
-      path: '/abnormalDetail',
-      name: 'abnormalDetail',
-      component: () => import('@/views/AbnormalDetail/Index.vue')
-    },
-
-    {
-      path: '/courtDetail',
-      name: 'courtDetail',
-      component: () => import('@/views/CourtDetail/Index.vue')
     }
+
   ]
 })
