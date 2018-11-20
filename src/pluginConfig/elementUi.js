@@ -11,7 +11,8 @@ import {
   DatePicker,
   Input,
   Select,
-  Option
+  Option,
+  Card
 
   // Header,
   // Footer,
@@ -34,7 +35,8 @@ const components = [
   Main,
   Input,
   Select,
-  Option
+  Option,
+  Card
   // Header,
   // Footer
   // Table,

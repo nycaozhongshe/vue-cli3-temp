@@ -7,7 +7,7 @@
                    :color="color">
     </Full-Calendar>
     <!-- 新建编辑窗口 -->
-    <el-dialog title="新建活动"
+    <el-dialog :title="editTitle"
                :visible.sync="dialogFormVisible">
       <el-form :model="form">
         <el-form-item label="活动名称"
@@ -47,6 +47,29 @@
         </el-button>
       </div>
     </el-dialog>
+
+    <div class="box-card"
+         :style="hoverDialogStyle"
+         v-show="hoverDialogVisible">
+
+      <!-- @mouseover="hoverDialogVisible=true"
+         @mouseout="hoverDialogVisible=false" -->
+
+      <el-card>
+        <div slot="header"
+             class="clearfix">
+          <span>卡片名称</span>
+          <el-button style="float: right; padding: 3px 0"
+                     type="text">操作按钮</el-button>
+        </div>
+        <div v-for="o in 4"
+             :key="o"
+             class="text item">
+          {{'列表内容 ' + o }}
+        </div>
+      </el-card>
+    </div>
+
   </div>
 </template>
 
@@ -56,45 +79,50 @@ import 'fullcalendar/dist/locale/zh-cn'
 
 import 'fullcalendar/dist/fullcalendar.css'
 
+// color eventColor 作用一样，设置事件的背景色和边框。
+// backgroundColor  eventBackgroundColor 作用一样，设置事件的背景色。
+// borderColor eventBorderColor 作用一样，设置事件的边框。
+// textColor eventTextColor 作用一样，设置事件的文字颜色
+// className  string 或者 Array 类型，
 var demoEvents = [
   {
-    title: 'Sunny Out of Office',
+    title: '<span>Sunny Out of Office</span>',
     start: '2018-10-25',
     end: '2018-11-11',
-    color: '#409EFF'
+    color: '#ad111a'
   },
   {
     title: 'Sunny Out of Office',
     start: '2018-10-25',
     end: '2018-11-11',
-    color: '#409EFF'
+    color: '#ad111a'
   },
   {
     title: 'Sunny Out of Office',
     start: '2018-10-25',
     end: '2018-11-11',
-    color: '#409EFF'
+    color: '#ad111a'
   },
   {
     title: 'Sunny Out of Office',
     start: '2018-10-25',
     end: '2018-11-11',
-    color: '#409EFF'
+    color: '#ad111a'
   }, {
     title: 'Sunny Out of Office',
     start: '2018-10-25',
     end: '2018-11-11',
-    color: '#409EFF'
+    color: '#ad111a'
   }, {
     title: 'Sunny Out of Office',
     start: '2018-10-25',
     end: '2018-11-11',
-    color: '#409EFF'
+    color: '#ad111a'
   }, {
     title: 'Sunny Out of Office',
     start: '2018-10-25',
     end: '2018-11-11',
-    color: '#ccc'
+    color: '#ad111a'
   }
 ]
 export default {
@@ -111,16 +139,25 @@ export default {
   data () {
     let that = this
     return {
+      hoverDialogVisible: false,
+
+      hoverDialogStyleTop: {
+        // top: 0,
+        // left: 0
+      },
+
       dialogFormVisible: false,
       formLabelWidth: '120px',
       form: {},
+      editTitle: '新建活动',
       fcEvents: demoEvents,
       config: {
         locale: 'zh-cn',
-        defaultView: 'month',
+        defaultView: 'month', // 默认视图
+        contentHeight: 'auto', // 设置高度
         header: {
           left: 'title', // 上一页、下一页、今天
-          center: 'month,listMonth,myCustomButton,', // 居中：时间范围区间标题
+          center: 'month,listMonth,myCustomButton', // 居中：时间范围区间标题
           // agendaWeek,agendaDay,
           right: 'today,prev,next' // 右边：显示哪些视图
         },
@@ -129,28 +166,73 @@ export default {
             text: '新建',
             click: function () {
               that.dialogFormVisible = true
+              that.editTitle = '新建活动'
               console.log(that.color)
             }
           }
         },
-        eventLimit: true,
-        eventLimitText: '更多',
+        // 点击事件触发
+        eventClick: function (event) {
+          console.log(event)
+          that.dialogFormVisible = true
+          that.editTitle = '编辑活动'
+        },
+        // 鼠标划过的事件
+        eventMouseover: function (event, jsEvent, view) {
+          // console.log(jsEvent)
+          // that.hoverDialogVisible = true
+
+          // let style = {
+          //   top: jsEvent.clientY + 'px',
+          //   left: jsEvent.clientX + 'px'
+          // }
+          // that.hoverDialogStyle = Object.assign({}, style)
+          // console.log(that.hoverStyle.top)
+
+          // console.log(event)
+        },
+        // 鼠标离开的事件
+        eventMouseout: function (event, jsEvent, view) {
+          // that.hoverDialogVisible = false
+          // console.log(event)
+        },
+        // 点击天触发的回调
+        dayClick: function (date, jsEvent, view) {
+          console.log(view)
+
+          // alert('Clicked on: ' + date.format())
+          // alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY)
+          // alert('Current view: ' + view.name)
+          // change the day's background color just for fun
+          // $(this).css('background-color', 'red')
+        },
+        eventLimit: true, // 限制
+        // eventLimitClick: 'listMonth', // 默认跳转
+        eventLimitText: '更多', // 隐藏文字
         weekNumbers: true,
         fixedWeekCount: true,
-        color: '#409EFF', // an option!
-        // textColor: 'black', // an option!
         // aspectRatio: 1,
+        editable: false, // 可以拖动
         weekends: true,
-        noEventsMessage: '没数据啊',
-        drop (...args) {
-          console.log(args)
+        noEventsMessage: '没数据啊'
+        // 强调时间
+        // businessHours: {
+        //   dow: [1, 2, 3, 4, 5], // 周一 - 周四
 
-          // handle drop logic in parent
-        }
+        //   start: '10:00', // 上午10点开始
+        //   end: '18:00' // 下午18点结束
+        // }
+
       }
     }
   },
-  computed: {},
+  computed: {
+    hoverStyle () {
+      console.log(111)
+
+      return this.hoverDialogStyle
+    }
+  },
 
   watch: {},
 
@@ -166,6 +248,15 @@ export default {
 </script>
 <style lang='scss' >
 .full-calendar__wrpper {
+  .box-card {
+    width: 300px;
+    position: fixed;
+    z-index: 3000;
+  }
+  .fc-unthemed th {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
   .fc-toolbar.fc-header-toolbar {
     margin-bottom: 2em;
   }
@@ -230,6 +321,10 @@ export default {
 
   .fc-button.fc-state-disabled.fc-button--text {
     background-color: transparent;
+  }
+  .fc-button.fc-state-active {
+    color: #9c0f17;
+    border-color: #9c0f17;
   }
 
   .fc-myCustomButton-button {
