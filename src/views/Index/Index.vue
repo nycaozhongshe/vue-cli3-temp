@@ -259,12 +259,10 @@ export default {
   destroyed () { },
 
   methods: {
-    beforeClose (done) {
+    beforeClose () {
       this.$refs.form.resetFields()
       console.log(this.$refs.form)
       console.log(this.form)
-
-      done()
     }
   }
 }
