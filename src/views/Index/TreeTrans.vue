@@ -1,6 +1,8 @@
 <!--  -->
 <template>
   <div>
+    <!-- leafOnly -->
+    <!-- openAll -->
     <tree-transfer :title="title"
                    :from_data='fromData'
                    :to_data='toData'
@@ -8,10 +10,21 @@
                    @addBtn='add'
                    @removeBtn='remove'
                    :mode='mode'
-                   height='540px'
-                   filter
-                   openAll>
+                   height="400px"
+                   lazy
+                   filter>
+      <!-- height='540px' -->
+
     </tree-transfer>
+    <div class="tree-footer">
+      <el-button @click="dialogFormVisible = false">
+        取 消
+      </el-button>
+      <el-button type="primary"
+                 @click="dialogFormVisible = false">
+        确 定
+      </el-button>
+    </div>
   </div>
 </template>
 
@@ -79,6 +92,7 @@ export default {
   destroyed () { },
 
   methods: {
+
     // 切换模式 现有树形穿梭框模式transfer 和通讯录模式addressList
     changeMode () {
       if (this.mode === 'transfer') {
@@ -91,9 +105,9 @@ export default {
     add (fromData, toData, obj) {
       // 树形穿梭框模式transfer时，返回参数为左侧树移动后数据、右侧树移动后数据、移动的{keys,nodes,halfKeys,halfNodes}对象
       // 通讯录模式addressList时，返回参数为右侧收件人列表、右侧抄送人列表、右侧密送人列表
-      console.log('fromData:', fromData)
-      console.log('toData:', toData)
-      console.log('obj:', obj)
+      console.log('fromData:', fromData, 1)
+      console.log('toData:', toData, 1)
+      console.log('obj:', obj, 1)
     },
     // 监听穿梭框组件移除
     remove (fromData, toData, obj) {
@@ -108,4 +122,8 @@ export default {
 
 </script>
 <style lang='scss' scoped>
+.tree-footer {
+  margin-top: 20px;
+  text-align: center;
+}
 </style>

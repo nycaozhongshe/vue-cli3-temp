@@ -14,7 +14,9 @@ import {
   Option,
   Card,
   Transfer,
-  Tree
+  Tree,
+  Tag
+
   // Header,
   // Footer,
   // Menu,
@@ -40,7 +42,8 @@ const components = [
   Option,
   Card,
   Transfer,
-  Tree
+  Tree,
+  Tag
 
   // Transfer
   // Header,

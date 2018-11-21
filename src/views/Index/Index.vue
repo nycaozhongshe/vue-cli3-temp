@@ -2,9 +2,11 @@
 <!-- Contacts -->
 <template>
   <div class="full-calendar__wrpper">
+
     <Full-Calendar :events="fcEvents"
                    :config="config"
-                   :color="color">
+                   :color="color"
+                   ref="calendar">
     </Full-Calendar>
     <!-- 新建编辑窗口 -->
     <el-dialog :title="editTitle"
@@ -33,12 +35,29 @@
                       prop='date'
                       :label-width="formLabelWidth">
           <el-date-picker v-model="form.date"
-                          type="datetimerange"
+                          type="daterange"
                           align="right"
                           start-placeholder="开始日期"
                           end-placeholder="结束日期"
                           :default-time="['12:00:00', '12:00:00']">
           </el-date-picker>
+        </el-form-item>
+
+        <el-form-item label="选择人员"
+                      prop='people'
+                      :label-width="formLabelWidth">
+          <div class="people-list"
+               @click="dialogTreeVisible =true">
+
+            <el-tag v-for="tag in tags"
+                    :key="tag.name"
+                    style="margin-left:10px;"
+                    closable
+                    @click.native.stop.prevent="handleClickTag"
+                    :type="tag.type">
+              {{tag.name}}
+            </el-tag>
+          </div>
         </el-form-item>
       </el-form>
       <div slot="footer"
@@ -75,8 +94,12 @@
       </el-card>
     </div>
 
-    <Tree-Trans></Tree-Trans>
-
+    <el-dialog title="选择人员"
+               :visible.sync="dialogTreeVisible"
+               @close="closeTree"
+               append-to-body>
+      <Tree-Trans></Tree-Trans>
+    </el-dialog>
   </div>
 </template>
 
@@ -147,9 +170,17 @@ export default {
 
   data () {
     let that = this
+    let height = () => window.innerHeight - 80
     return {
+      tags: [
+        { name: '标签一', type: '' },
+        { name: '标签二', type: 'success' },
+        { name: '标签三', type: 'info' },
+        { name: '标签四', type: 'warning' },
+        { name: '标签五', type: 'danger' }
+      ],
       hoverDialogVisible: false,
-
+      dialogTreeVisible: false,
       hoverDialogStyleTop: {
         // top: 0,
         // left: 0
@@ -164,6 +195,13 @@ export default {
         locale: 'zh-cn',
         defaultView: 'month', // 默认视图
         contentHeight: 'auto', // 设置高度
+        height: height,
+        // windowResize: function (...arg) {
+        //   // $('#calendar').fullCalendar('option', 'height', window.innerHeight - 20)
+
+        //   that.$refs.calendar.fireMethod('next')
+        //   console.log(arg[0])
+        // },
         // theme: true,
 
         // allDayDefault: false,
@@ -182,13 +220,11 @@ export default {
             click: function () {
               that.dialogFormVisible = true
               that.editTitle = '新建活动'
-              console.log(that.color)
             }
           }
         },
         // 点击事件触发
         eventClick: function (event) {
-          console.log(event)
           that.dialogFormVisible = true
           that.editTitle = '编辑活动'
         },
@@ -213,7 +249,6 @@ export default {
         },
         // 点击天触发的回调
         dayClick: function (date, jsEvent, view) {
-          console.log(view)
           that.dialogFormVisible = true
           that.editTitle = '新建活动'
           // alert('Clicked on: ' + date.format())
@@ -244,8 +279,6 @@ export default {
   },
   computed: {
     hoverStyle () {
-      console.log(111)
-
       return this.hoverDialogStyle
     }
   },
@@ -254,15 +287,25 @@ export default {
 
   created () { },
 
-  mounted () { },
+  mounted () {
+    this.config.height = 200
+    // this.$refs.calendar.fireMethod('next')
+
+    // console.log(this.config)
+  },
 
   destroyed () { },
 
   methods: {
+    handleClickTag () {
+
+    },
+    closeTree () {
+      console.log('clear')
+    },
+
     beforeClose () {
       this.$refs.form.resetFields()
-      console.log(this.$refs.form)
-      console.log(this.form)
     }
   }
 }
@@ -270,14 +313,31 @@ export default {
 </script>
 <style lang='scss' >
 .full-calendar__wrpper {
+  color: $--color-text-regular;
+  .people-list {
+    min-height: 40px;
+    line-height: 40px;
+    border: 1px solid $--border-color-base;
+    transition: $--border-transition-base;
+    border-radius: $--border-radius-base;
+  }
+  .fc-toolbar .fc-left h2 {
+    min-width: 7em;
+  }
   .box-card {
-    width: 300px;
     position: fixed;
     z-index: 3000;
+    width: 300px;
   }
   .fc-unthemed th {
     padding-top: 1em;
     padding-bottom: 1em;
+  }
+  .fc-unthemed td.fc-today,
+  .fc-unthemed .fc-divider,
+  .fc-unthemed .fc-popover .fc-header,
+  .fc-unthemed .fc-list-heading td {
+    background: $--color-primary-light-9;
   }
   .fc-toolbar.fc-header-toolbar {
     margin-bottom: 2em;
@@ -288,10 +348,9 @@ export default {
     line-height: 1;
     white-space: nowrap;
     cursor: pointer;
-    background: #fff;
-    border: 1px solid #c7c7c7;
-    border-color: #c7c7c7;
-    color: #606266;
+    background: $--color-white;
+    border: 1px solid $--border-color-base;
+    color: $--color-text-regular;
     -webkit-appearance: none;
     text-align: center;
     -webkit-box-sizing: border-box;
@@ -320,59 +379,60 @@ export default {
 
   .fc-button:hover,
   .fc-button:focus {
-    color: #ad111a;
-    border-color: #e6b8ba;
-    background-color: #f7e7e8;
+    color: $--color-primary;
+    border-color: $--color-primary-light-7;
+    background-color: $--color-primary-light-9;
   }
 
   .fc-button:active {
-    color: #9c0f17;
-    border-color: #9c0f17;
+    color: $--actvie-color;
+    border-color: $--actvie-color;
     outline: none;
   }
 
   .fc-button.fc-state-disabled,
   .fc-button.fc-state-disabled:hover,
   .fc-button.fc-state-disabled:focus {
-    color: #c0c4cc;
+    color: $--color-text-placeholder;
     cursor: not-allowed;
     background-image: none;
-    background-color: #fff;
-    border-color: #ebeef5;
+    background-color: $--color-white;
+    border-color: $--border-color-lighter;
   }
 
   .fc-button.fc-state-disabled.fc-button--text {
     background-color: transparent;
   }
   .fc-button.fc-state-active {
-    color: #9c0f17;
-    border-color: #9c0f17;
+    color: $--actvie-color;
+    border-color: $--actvie-color;
   }
 
   .fc-myCustomButton-button {
-    color: #fff;
-    background-color: #ad111a;
-    border-color: #ad111a;
+    color: $--color-white;
+    background-color: $--color-primary;
+    border-color: $--color-primary;
+    // background: rgba($--color-text-secondary, 0.12);
   }
 
   .fc-myCustomButton-button:hover,
   .fc-myCustomButton-button:focus {
-    background: #bd4148;
-    border-color: #bd4148;
-    color: #fff;
+    background: $--color-primary-light-2;
+    border-color: $--color-primary-light-2;
+    color: $--color-white;
   }
 
   .fc-myCustomButton-button:active {
-    background: #9c0f17;
-    border-color: #9c0f17;
-    color: #fff;
+    background: $--actvie-color;
+    border-color: $--actvie-color;
+    color: $--color-white;
     outline: none;
   }
 
   .fc-myCustomButton-button.is-active {
-    background: #9c0f17;
-    border-color: #9c0f17;
-    color: #fff;
+    background: $--actvie-color;
+    border-color: $--actvie-color;
+    color: $--color-white;
   }
 }
 </style>

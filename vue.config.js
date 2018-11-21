@@ -127,7 +127,7 @@ module.exports = {
      * sass-resources-loader 文档链接：https://github.com/shakacode/sass-resources-loader
      */
     const oneOfsMap = config.module.rule('scss').oneOfs.store
-    const sassResources = ['reset.scss', 'color.scss', 'mixin.scss'] // scss资源文件，可以在里面定义变量，mixin,全局样式等
+    const sassResources = ['reset.scss', 'color.scss', 'mixin.scss', 'element-variables.scss'] // scss资源文件，可以在里面定义变量，mixin,全局样式等
     oneOfsMap.forEach(item => {
       item
         .use('sass-resources-loader')
