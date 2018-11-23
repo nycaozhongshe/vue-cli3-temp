@@ -127,7 +127,9 @@ export default {
         let params = { keyword: this.input, pageIndex: 1, pageSize: 20 }
         // 添加省市编码
         if (this.selectedOptions.length === 1) {
-          params.ProvinceCode = this.selectedOptions[0]
+          if (this.selectedOptions[0] !== 'CN') {
+            params.ProvinceCode = this.selectedOptions[0]
+          }
         } else if (this.selectedOptions.length === 2) {
           params.ProvinceCode = this.selectedOptions[0]
           params.cityCode = this.selectedOptions[1]

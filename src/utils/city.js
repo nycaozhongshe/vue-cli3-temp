@@ -2,7 +2,7 @@ export default [
   {
     'ID': '10',
     'Code': 'CN',
-    'City': '总局',
+    'City': '全部',
     'PinYin': 'Zongju',
     'MinSearchLen': '2',
     'Status': '1',
