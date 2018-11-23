@@ -121,6 +121,7 @@ var demoEvents = [
     start: '2018-10-25 15:29:00',
     end: '2018-11-11 15:29:00',
     color: '#ad111a'
+    // className: 'done'
   },
   {
     title: 'Sunny Out of Office',
@@ -314,6 +315,25 @@ export default {
 <style lang='scss' >
 .full-calendar__wrpper {
   color: $--color-text-regular;
+
+  /* Event 参数 className 的值 */
+  .done:before {
+    content: '【 已完成 】';
+    background-color: yellow;
+    color: green;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+  }
+  /* Event 参数 className 的值 */
+  .doing:before {
+    content: '【 未完成 】';
+    background-color: yellow;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+  }
+
   .people-list {
     min-height: 40px;
     line-height: 40px;
