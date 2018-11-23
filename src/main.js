@@ -3,17 +3,24 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import MetaInfo from 'vue-meta-info'
-import i18n from './i18n/i18n.js'
-import VueLazyload from 'vue-lazyload'
+// import i18n from './i18n/i18n.js'
+// import VueLazyload from 'vue-lazyload'
 import VueProgressiveImage from 'vue-progressive-image'
 import '@/router/permission'
 import '@/style/index.scss'
 import elementUiOptions from '@/pluginConfig/elementUi'
+import VueVideoPlayer from 'vue-video-player'
+import 'video.js/dist/video-js.css'
 
-import VueLazyloadOptions from '@/pluginConfig/vueLazyload.js'
+// import VueLazyloadOptions from '@/pluginConfig/vueLazyload.js'
+
+Vue.use(VueVideoPlayer /* {
+  options: global default options,
+  events: global videojs events
+} */)
 
 // 懒加载
-Vue.use(VueLazyload, VueLazyloadOptions)
+// Vue.use(VueLazyload, VueLazyloadOptions)
 
 // 渐进式图片加载
 Vue.use(VueProgressiveImage, {
@@ -33,7 +40,7 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  i18n,
+  // i18n,
   render: h => h(App),
   /* 这句非常重要，否则预渲染将不会启动 */
   mounted () {
