@@ -29,7 +29,6 @@ const baseUrl = process.env.BASE_URL
 Vue.prototype.$baseUrl = baseUrl.substr(0, baseUrl.Length - 1)
 
 Vue.config.productionTip = false
-
 new Vue({
   router,
   store,
