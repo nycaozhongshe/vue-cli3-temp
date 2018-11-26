@@ -50,9 +50,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// 注意这里没有使用@import
-// 全局font-size: 20px;
-// 变量$text-color、$theme-color
-// 和button()的mixin是借助sass-resources-loader实现的
+<style lang="scss" >
+#app {
+  width: 100%;
+  height: 100%;
+  .el-container {
+    height: 100%;
+  }
+  .el-main {
+    padding: 0;
+    height: 100%;
+  }
+}
 </style>

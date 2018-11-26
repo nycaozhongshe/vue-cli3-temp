@@ -11,7 +11,8 @@ import {
   // DatePicker,
   Menu,
   Submenu,
-  MenuItem
+  MenuItem,
+  Dialog
 } from 'element-ui'
 
 const components = [
@@ -24,7 +25,8 @@ const components = [
   // DatePicker,
   Menu,
   Submenu,
-  MenuItem
+  MenuItem,
+  Dialog
 ]
 
 const install = function (Vue, opts = {}) {

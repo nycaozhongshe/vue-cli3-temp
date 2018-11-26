@@ -1,12 +1,12 @@
 const path = require('path')
-const chalk = require('chalk')
+// const chalk = require('chalk')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 // 存放build结果的文件夹(主要是为了填prerender在配置了baseUrl后带来的坑,下面会说)
 const DIST_ROOT = 'dist'
 // 项目部署在服务器里的绝对路径，默认'/'，参考https://cli.vuejs.org/zh/config/#baseurl
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/' : '/'
+const BASE_URL = process.env.NODE_ENV === 'production' ? './' : '/'
 
 console.log(process.env.NODE_ENV)
 
@@ -31,16 +31,16 @@ const cdn = {
   ]
 }
 // 需要预渲染的路由
-const prerenderRoutes = ['/', '/contacts']
+// const prerenderRoutes = ['/', '/contacts']
 // 是否使用gzip
 const productionGzip = true
 // 需要gzip压缩的文件后缀
 const productionGzipExtensions = ['js', 'css']
 
 module.exports = {
-  baseUrl: BASE_URL,
-  outputDir: DIST_ROOT + BASE_URL, // prerendner会借助一个express服务器来预渲染，改变baseUrl后要保证这个模拟服务器能够找到所需的资源
-  assetsDir: 'static',
+  baseUrl: './',
+  outputDir: DIST_ROOT, // prerendner会借助一个express服务器来预渲染，改变baseUrl后要保证这个模拟服务器能够找到所需的资源
+  // assetsDir: 'static',
   lintOnSave: true,
   productionSourceMap: false,
   configureWebpack: config => {
@@ -50,40 +50,40 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       // 1. 使用预渲染，在仅加载html和css之后即可显示出基础的页面，提升用户体验，避免白屏
       myConfig.plugins = [
-        new PrerenderSPAPlugin({
-          staticDir: path.resolve(__dirname, DIST_ROOT), // 作为express.static()中间件的路径
-          outputDir: path.resolve(__dirname, DIST_ROOT + BASE_URL),
-          indexPath: path.resolve(__dirname, DIST_ROOT + BASE_URL + 'index.html'),
-          routes: prerenderRoutes,
-          renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
-            renderAfterTime: 5000
-          }),
-          renderAfterDocumentEvent: 'render-event', // 这句话会报错building for production...[prerender-spa-plugin] Unable to prerender all routes!
+        // new PrerenderSPAPlugin({
+        //   staticDir: path.resolve(__dirname, DIST_ROOT), // 作为express.static()中间件的路径
+        //   outputDir: path.resolve(__dirname, DIST_ROOT + BASE_URL),
+        //   indexPath: path.resolve(__dirname, DIST_ROOT + BASE_URL + 'index.html'),
+        //   routes: prerenderRoutes,
+        //   renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
+        //     renderAfterTime: 5000
+        //   }),
+        //   renderAfterDocumentEvent: 'render-event', // 这句话会报错building for production...[prerender-spa-plugin] Unable to prerender all routes!
 
-          minify: {
-            collapseBooleanAttributes: true,
-            collapseWhitespace: true,
-            decodeEntities: true,
-            keepClosingSlash: true,
-            sortAttributes: true
-          },
-          postProcess (renderedRoute) {
-            /**
-             * 懒加载模块会自动注入，无需直接通过script标签引入
-             * 而且预渲染的html注入的是modern版本的懒加载模块
-             * 这会导致在低版本浏览器出现报错，需要剔除
-             * 这并不是一个非常严谨的正则，不适用于使用了 webpackChunkName: "group-foo" 注释的懒加载
-             */
-            renderedRoute.html = renderedRoute.html.replace(
-              /<script[^<]*chunk-[a-z0-9]{8}\.[a-z0-9]{8}.js[^<]*><\/script>/g,
-              function (target) {
-                console.log(chalk.bgRed('\n\n剔除的懒加载标签:'), chalk.magenta(target))
-                return ''
-              }
-            )
-            return renderedRoute
-          }
-        }),
+        //   minify: {
+        //     collapseBooleanAttributes: true,
+        //     collapseWhitespace: true,
+        //     decodeEntities: true,
+        //     keepClosingSlash: true,
+        //     sortAttributes: true
+        //   },
+        //   postProcess (renderedRoute) {
+        //     /**
+        //      * 懒加载模块会自动注入，无需直接通过script标签引入
+        //      * 而且预渲染的html注入的是modern版本的懒加载模块
+        //      * 这会导致在低版本浏览器出现报错，需要剔除
+        //      * 这并不是一个非常严谨的正则，不适用于使用了 webpackChunkName: "group-foo" 注释的懒加载
+        //      */
+        //     renderedRoute.html = renderedRoute.html.replace(
+        //       /<script[^<]*chunk-[a-z0-9]{8}\.[a-z0-9]{8}.js[^<]*><\/script>/g,
+        //       function (target) {
+        //         console.log(chalk.bgRed('\n\n剔除的懒加载标签:'), chalk.magenta(target))
+        //         return ''
+        //       }
+        //     )
+        //     return renderedRoute
+        //   }
+        // }),
         new BundleAnalyzerPlugin()
       ]
       // 2. 构建时开启gzip，降低服务器压缩对CPU资源的占用，服务器也要相应开启gzip

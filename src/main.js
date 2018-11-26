@@ -8,6 +8,8 @@ import MetaInfo from 'vue-meta-info'
 import VueProgressiveImage from 'vue-progressive-image'
 import '@/router/permission'
 import '@/style/index.scss'
+import '@/style/transition.scss'
+
 import elementUiOptions from '@/pluginConfig/elementUi'
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
