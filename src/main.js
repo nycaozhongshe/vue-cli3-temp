@@ -26,7 +26,10 @@ Vue.use(MetaInfo)
 
 const baseUrl = process.env.BASE_URL
 
+// 路由hash模式不适用
 Vue.prototype.$baseUrl = baseUrl.substr(0, baseUrl.Length - 1)
+// hash
+// Vue.prototype.$baseUrl = baseUrl
 
 Vue.config.productionTip = false
 
