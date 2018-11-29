@@ -1,7 +1,7 @@
 <!-- Contacts -->
 <template>
   <div>
-    Contacts
+    Contacts22222222
     <el-input placeholder="Please input"
               v-model="input">
     </el-input>

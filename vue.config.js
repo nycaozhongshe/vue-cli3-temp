@@ -8,8 +8,6 @@ const DIST_ROOT = 'dist'
 // 项目部署在服务器里的绝对路径，默认'/'，参考https://cli.vuejs.org/zh/config/#baseurl
 const BASE_URL = process.env.NODE_ENV === 'production' ? '/' : '/'
 
-console.log(process.env.NODE_ENV)
-
 // 转为CND外链方式的npm包，键名是import的npm包名，键值是该库暴露的全局变量，参考https://webpack.js.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx
 const externals = {
   'vue': 'Vue',
@@ -85,9 +83,12 @@ module.exports = {
             )
             return renderedRoute
           }
-        }),
-        new BundleAnalyzerPlugin()
+        })
       ]
+      // 如果是本地环境就分析
+      if (process.env.Analyzer) {
+        myConfig.plugins.push(new BundleAnalyzerPlugin())
+      }
       // 2. 构建时开启gzip，降低服务器压缩对CPU资源的占用，服务器也要相应开启gzip
       productionGzip && myConfig.plugins.push(
         new CompressionWebpackPlugin({
