@@ -58,6 +58,8 @@ module.exports = {
           renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
             renderAfterTime: 5000
           }),
+          headless: true,
+          args: ['--no-sandbox'],
           renderAfterDocumentEvent: 'render-event', // 这句话会报错building for production...[prerender-spa-plugin] Unable to prerender all routes!
 
           minify: {
