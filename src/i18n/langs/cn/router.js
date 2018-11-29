@@ -1,5 +1,5 @@
 export default {
-  'index': '主页我的',
+  'index': '我的主页',
   'contacts': '联系我们',
   'map': '地图',
   'icon': 'icon',
