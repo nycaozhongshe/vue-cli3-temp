@@ -21,7 +21,7 @@ const cdn = {
     // 'https://unpkg.com/element-ui/lib/theme-chalk/index.css'
   ],
   js: [
-    'https://cdn.polyfill.io/v2/polyfill.min.js',
+    // 'https://cdn.polyfill.io/v2/polyfill.min.js',
     'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js',
     'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js',
     'https://cdn.jsdelivr.net/npm/vuex@3.0.1/dist/vuex.min.js',
