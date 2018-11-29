@@ -70,6 +70,7 @@ export default {
 </script>
 <style lang='scss' scoped>
 .header-content {
+  -js-display: flex;
   display: flex;
   .logo {
     width: 200px;
