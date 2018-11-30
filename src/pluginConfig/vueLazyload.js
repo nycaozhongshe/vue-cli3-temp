@@ -15,13 +15,13 @@ export default {
     //     listener.loading = listener.src + '?imageView2/1/w/10/h/10'
     //   }
     // },
-    webp (listener, options) {
-      if (!options.supportWebp) return
-      let src = listener.src
-      const reg = /^(__imgs)+$/
-      if (reg.test(src)) {
-        listener.src = (src.replace(/(\.jpg|\.png)/g, '.webp'))
-      }
-    }
+    // webp (listener, options) {
+    //   if (!options.supportWebp) return
+    //   let src = listener.src
+    //   const reg = /^(__imgs)+$/
+    //   if (reg.test(src)) {
+    //     listener.src = (src.replace(/(\.jpg|\.png)/g, '.webp'))
+    //   }
+    // }
   }
 }
