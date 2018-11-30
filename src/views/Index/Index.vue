@@ -1,7 +1,7 @@
 <!-- Index -->
 <template>
   <div>
-    <img v-lazy="{src:$baseUrl+'__imgs/common/timg1.png',loading:$baseUrl+'__imgs/common/timg1.png'}"
+    <img v-lazy="{src:$baseUrl+'__imgs/common/timg1.jepg',loading:$baseUrl+'__imgs/common/timg1.jepg'}"
          alt="">
 
     <el-input placeholder="请输入内容"
