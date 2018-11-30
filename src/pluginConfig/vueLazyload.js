@@ -4,7 +4,7 @@ const baseUrl = process.env.BASE_URL
 export default {
   preLoad: 1.3,
   error: `${baseUrl}__imgs/common/error.png`,
-  loading: `${baseUrl}__imgs/common/loading.gif`,
+  // loading: `${baseUrl}__imgs/common/loading.gif`,
   attempt: 1,
   observer: false,
   filter: {
