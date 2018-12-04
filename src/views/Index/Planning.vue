@@ -1,6 +1,6 @@
 <!-- Planning -->
 <template>
-  <div class="planning__warpper">
+  <div class="planning__warpper ">
     <div class="planning-item"
          v-for="(item,index) in planningList"
          :key="index">

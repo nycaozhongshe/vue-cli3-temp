@@ -13,7 +13,7 @@ import {
   Submenu,
   MenuItem
 } from 'element-ui'
-
+import 'element-ui/lib/theme-chalk/base.css'
 const components = [
   Button,
   Container,
@@ -26,7 +26,6 @@ const components = [
   Submenu,
   MenuItem
 ]
-
 const install = function (Vue, opts = {}) {
   components.forEach(component => {
     Vue.component(component.name, component)

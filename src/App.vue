@@ -75,4 +75,12 @@ export default {
 //     font-size: 187.5% !important;
 //   }
 // }
+#app .el-footer {
+  padding: 0;
+}
+.center-content {
+  max-width: 11rem;
+  width: 100%;
+  margin: 0 auto;
+}
 </style>

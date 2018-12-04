@@ -26,5 +26,6 @@ export default {
         icon: 'renminbi'
       }]
   },
+  contacts: '联系我们',
   submit: '发送'
 }

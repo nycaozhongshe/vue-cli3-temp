@@ -41,7 +41,7 @@
 
         </div>
 
-        <el-menu :default-active="$route.path"
+        <!-- <el-menu :default-active="$route.path"
                  class="header-nav"
                  mode="horizontal"
                  @select="handleSelect"
@@ -51,7 +51,9 @@
                      :menu="item"
                      :key="item.name">
           </Menu-Item>
-        </el-menu>
+        </el-menu> -->
+
+        <Custom-Menu></Custom-Menu>
 
       </div>
     </div>
@@ -60,7 +62,7 @@
 </template>
 
 <script>
-import MenuItem from './MenuItem'
+import CustomMenu from './Menu'
 import { saveLang, getLang } from '@/utils'
 
 export default {
@@ -74,7 +76,7 @@ export default {
   },
 
   components: {
-    MenuItem
+    CustomMenu
   },
 
   computed: {

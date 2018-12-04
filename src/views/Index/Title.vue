@@ -1,7 +1,8 @@
 <!-- Title -->
 <template>
   <div class="title__warpper">
-    <h4 class="title">
+    <h4 class="title"
+        :class={gary:gary}>
       {{title}}
     </h4>
   </div>
@@ -19,6 +20,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    gary: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -72,6 +77,12 @@ export default {
       bottom: -4px;
       left: 50%;
       margin-left: -5px;
+    }
+  }
+
+  .gary {
+    &::before {
+      background: #f8f7f7;
     }
   }
 }

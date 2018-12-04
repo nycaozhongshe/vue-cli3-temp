@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: 'MenuItem',
+  name: 'Menu',
   props: {
     menu: Object
   },
@@ -41,6 +41,7 @@ export default {
     currentItemComponent: function () {
       return this.hasChildren() ? 'el-submenu' : 'el-menu-item'
     }
+
   },
   methods: {
     hasChildren () {

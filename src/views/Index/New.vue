@@ -1,13 +1,21 @@
 <!-- Index-new -->
 <template>
-  <div class="index-new__warpper">
+  <div class="index-new__warpper ">
     <div class="new-item"
          v-for="(item,index) in 3 "
          :key="index">
+      <!-- 箭头 -->
+      <div class="jiantou__warpper">
+        <Icon icon-class="jiantou-shangxia"
+              class-name="icon">
+        </Icon>
+      </div>
+      <!-- 图片   -->
       <div class="new-img"
            v-lazy:background-image.container="$baseUrl+'__imgs/index/index-company@2x.jpg'">
 
       </div>
+      <!-- 文字 -->
       <div class="text-content">
 
         <div class="mask">
@@ -32,12 +40,16 @@
 </template>
 
 <script>
+import Icon from '@/components/Icon'
+
 export default {
   name: 'Index-new',
 
   mixins: [],
 
-  components: {},
+  components: {
+    Icon
+  },
 
   props: {},
 
@@ -66,6 +78,7 @@ export default {
   display: flex;
   .new-item {
     cursor: pointer;
+    position: relative;
     width: 33.33%;
     width: calc(100% / 3);
     display: flex;
@@ -73,6 +86,23 @@ export default {
     &:nth-child(2) {
       .text-content {
         order: -1;
+      }
+    }
+    .jiantou__warpper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: $--color-primary;
+      transform: translate(-50%, -50%);
+      z-index: 99;
+      color: #fff;
+      width: 0.34rem;
+      height: 0.34rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        font-size: 0.18rem;
       }
     }
     .text-content {
@@ -110,6 +140,9 @@ export default {
           font-size: 0.16rem;
           color: $--color-primary;
           text-align: right;
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }

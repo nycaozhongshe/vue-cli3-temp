@@ -4,26 +4,23 @@
     <div class="banner">
     </div>
     <div class="index-content">
-
-      <Title :title="$t('index.news')"></Title>
-      <New></New>
+      <!-- 新闻 -->
+      <div class="center-content">
+        <Title :title="$t('index.news')"></Title>
+        <New></New>
+      </div>
       <!-- 公司简介 -->
-      <Title :title="$t('index.companyProfile.title')"></Title>
-      <Company-Profile></Company-Profile>
+      <div class="company-profile__warpper">
+        <Title :title="$t('index.companyProfile.title')"
+               gary></Title>
+        <Company-Profile></Company-Profile>
+      </div>
       <!-- 未来规划 -->
-      <Title :title="$t('index.planning.title')"></Title>
-      <Planning></Planning>
-      <!-- 联系我们 -->
+      <div class="center-content">
+        <Title :title="$t('index.planning.title')"></Title>
+        <Planning></Planning>
+      </div>
 
-      <el-input v-model="input"
-                placeholder="请输入内容">
-      </el-input>
-      <el-input v-model="input"
-                placeholder="请输入内容">
-      </el-input>
-      <el-button type="primary">
-        发送
-      </el-button>
     </div>
 
   </div>
@@ -86,8 +83,7 @@ export default {
   width: 100%;
   height: 5.7rem;
 }
-.index-content {
-  max-width: 11rem;
-  margin: 0 auto;
+.company-profile__warpper {
+  background: #f8f7f7;
 }
 </style>
