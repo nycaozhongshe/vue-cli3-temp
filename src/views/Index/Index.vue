@@ -63,18 +63,18 @@
           </el-table-column>
           <el-table-column fixed="right"
                            label="查询操作"
-                           width="120">
+                           width="130">
             <template slot-scope="scope">
               <el-button @click="handleClickCourt(scope.row)"
                          type="text"
                          size="small">
-                法院公告
+                法院公告查询
               </el-button>
               <br>
               <el-button @click="handleClickAbnormal(scope.row)"
                          size="small"
                          type="text">
-                经营异常
+                异常信息查询
               </el-button>
             </template>
           </el-table-column>
