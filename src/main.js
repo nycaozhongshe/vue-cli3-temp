@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-// import store from './store'
+import store from './store'
 // import MetaInfo from 'vue-meta-info'
 // import i18n from './i18n/i18n.js'
 // import VueLazyload from 'vue-lazyload'
@@ -32,7 +32,7 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  // store,
+  store,
   // i18n,
   render: h => h(App),
   /* 这句非常重要，否则预渲染将不会启动 */
