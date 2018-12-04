@@ -21,6 +21,7 @@ const cdn = {
     // 'https://unpkg.com/element-ui/lib/theme-chalk/index.css'
   ],
   js: [
+    '//at.alicdn.com/t/font_946570_bbr4ahod434.js',
     'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js',
     'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js',
     'https://cdn.jsdelivr.net/npm/vuex@3.0.1/dist/vuex.min.js',
@@ -39,6 +40,7 @@ module.exports = {
   outputDir: DIST_ROOT + BASE_URL, // prerendner会借助一个express服务器来预渲染，改变baseUrl后要保证这个模拟服务器能够找到所需的资源
   assetsDir: 'static',
   lintOnSave: true,
+  runtimeCompiler: true,
   productionSourceMap: false,
   configureWebpack: config => {
     const myConfig = {}
@@ -129,7 +131,7 @@ module.exports = {
      * sass-resources-loader 文档链接：https://github.com/shakacode/sass-resources-loader
      */
     const oneOfsMap = config.module.rule('scss').oneOfs.store
-    const sassResources = ['reset.scss', 'color.scss', 'mixin.scss'] // scss资源文件，可以在里面定义变量，mixin,全局样式等
+    const sassResources = ['reset.scss', 'color.scss', 'mixin.scss', 'element-variables.scss'] // scss资源文件，可以在里面定义变量，mixin,全局样式等
     oneOfsMap.forEach(item => {
       item
         .use('sass-resources-loader')

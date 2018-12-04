@@ -389,7 +389,23 @@ template {
 }
 
 img {
+  max-width: 100%;
   width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+html {
+  font-size: 625% !important;
+}
+
+@media (max-width: 968px) {
+  html {
+    font-size: 562.5% !important;
+  }
+}
+
+body {
+  font-size: .16rem;
+  color: #333;
 }

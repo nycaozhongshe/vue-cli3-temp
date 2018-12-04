@@ -1,7 +1,7 @@
 export default {
-  'index': '我的主页',
-  'contacts': '联系我们',
-  'map': '地图',
-  'icon': 'icon',
-  'date': '日期'
+  'index': '首页',
+  'about': '关于鸿泰',
+  'news': '新闻',
+  'hr': '人力资源',
+  'contacts': '联系我们'
 }

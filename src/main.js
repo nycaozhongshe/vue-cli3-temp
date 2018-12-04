@@ -5,7 +5,7 @@ import store from './store'
 import MetaInfo from 'vue-meta-info'
 import i18n from './i18n/i18n.js'
 import VueLazyload from 'vue-lazyload'
-import VueProgressiveImage from 'vue-progressive-image'
+// import VueProgressiveImage from 'vue-progressive-image'
 import '@/router/permission'
 import '@/style/index.scss'
 import elementUiOptions from '@/pluginConfig/elementUi'
@@ -16,18 +16,15 @@ import elementUiOptions from '@/pluginConfig/elementUi'
 Vue.use(VueLazyload, {})
 
 // 渐进式图片加载
-Vue.use(VueProgressiveImage, {
+// Vue.use(VueProgressiveImage, {
 
-})
+// })
 // 按需引入组件
 Vue.use(elementUiOptions)
 // seo
 Vue.use(MetaInfo)
 
-const baseUrl = process.env.BASE_URL
-
-Vue.prototype.$baseUrl = baseUrl.substr(0, baseUrl.Length - 1)
-
+Vue.prototype.$baseUrl = process.env.BASE_URL
 Vue.config.productionTip = false
 
 new Vue({

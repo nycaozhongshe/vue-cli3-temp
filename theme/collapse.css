@@ -459,10 +459,16 @@
   border-bottom: 1px solid #ebeef5; }
 
 .el-collapse-item__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 48px;
   line-height: 48px;
   background-color: #fff;
-  color: #303133;
+  color: #333;
   cursor: pointer;
   border-bottom: 1px solid #ebeef5;
   font-size: 13px;
@@ -471,19 +477,17 @@
   transition: border-bottom-color .3s;
   outline: none; }
   .el-collapse-item__arrow {
-    margin-right: 8px;
+    margin: 0 8px 0 auto;
     -webkit-transition: -webkit-transform .3s;
     transition: -webkit-transform .3s;
     transition: transform .3s;
     transition: transform .3s, -webkit-transform .3s;
-    float: right;
-    line-height: 48px;
     font-weight: 300; }
     .el-collapse-item__arrow.is-active {
       -webkit-transform: rotate(90deg);
       transform: rotate(90deg); }
   .el-collapse-item__header.focusing:focus:not(:hover) {
-    color: #409EFF; }
+    color: #053875; }
   .el-collapse-item__header.is-active {
     border-bottom-color: transparent; }
 
@@ -498,7 +502,7 @@
 .el-collapse-item__content {
   padding-bottom: 25px;
   font-size: 13px;
-  color: #303133;
+  color: #333;
   line-height: 1.769230769230769; }
 
 .el-collapse-item:last-child {

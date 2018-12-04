@@ -34,6 +34,7 @@ const install = function (Vue, opts = {}) {
   Vue.use(Loading.directive)
   Vue.prototype.$loading = Loading.service
   Vue.prototype.$message = Message
+  Vue.prototype.$ELEMENT = { size: 'large', zIndex: 3000 }
 }
 
 export default {

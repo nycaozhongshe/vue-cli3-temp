@@ -582,7 +582,7 @@
   .el-date-editor .el-range__icon {
     font-size: 14px;
     margin-left: -5px;
-    color: #c0c4cc;
+    color: #BFBFBF;
     float: left;
     line-height: 32px; }
   .el-date-editor .el-range-input {
@@ -600,11 +600,11 @@
     font-size: 14px;
     color: #606266; }
     .el-date-editor .el-range-input::-webkit-input-placeholder {
-      color: #c0c4cc; }
+      color: #BFBFBF; }
     .el-date-editor .el-range-input::-ms-input-placeholder {
-      color: #c0c4cc; }
+      color: #BFBFBF; }
     .el-date-editor .el-range-input::placeholder {
-      color: #c0c4cc; }
+      color: #BFBFBF; }
   .el-date-editor .el-range-separator {
     display: inline-block;
     height: 100%;
@@ -614,10 +614,10 @@
     line-height: 32px;
     font-size: 14px;
     width: 5%;
-    color: #303133; }
+    color: #333; }
   .el-date-editor .el-range__close-icon {
     font-size: 14px;
-    color: #c0c4cc;
+    color: #BFBFBF;
     width: 25px;
     display: inline-block;
     float: right;
@@ -636,9 +636,9 @@
   line-height: 1; }
 
 .el-range-editor.is-active {
-  border-color: #409EFF; }
+  border-color: #053875; }
   .el-range-editor.is-active:hover {
-    border-color: #409EFF; }
+    border-color: #053875; }
 
 .el-range-editor--medium.el-input__inner {
   height: 36px; }
@@ -685,22 +685,22 @@
 .el-range-editor.is-disabled {
   background-color: #f5f7fa;
   border-color: #e4e7ed;
-  color: #c0c4cc;
+  color: #BFBFBF;
   cursor: not-allowed; }
   .el-range-editor.is-disabled:hover, .el-range-editor.is-disabled:focus {
     border-color: #e4e7ed; }
   .el-range-editor.is-disabled input {
     background-color: #f5f7fa;
-    color: #c0c4cc;
+    color: #BFBFBF;
     cursor: not-allowed; }
     .el-range-editor.is-disabled input::-webkit-input-placeholder {
-      color: #c0c4cc; }
+      color: #BFBFBF; }
     .el-range-editor.is-disabled input::-ms-input-placeholder {
-      color: #c0c4cc; }
+      color: #BFBFBF; }
     .el-range-editor.is-disabled input::placeholder {
-      color: #c0c4cc; }
+      color: #BFBFBF; }
   .el-range-editor.is-disabled .el-range-separator {
-    color: #c0c4cc; }
+    color: #BFBFBF; }
 
 /* Element Chalk Variables */
 /* Transition
@@ -1048,7 +1048,7 @@
   -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   background: #fff;
-  border-radius: 4px;
+  border-radius: 0px;
   line-height: 30px;
   margin: 5px 0; }
   .el-picker-panel__body::after, .el-picker-panel__body-wrapper::after {
@@ -1078,10 +1078,10 @@
     outline: none;
     cursor: pointer; }
     .el-picker-panel__shortcut:hover {
-      color: #409EFF; }
+      color: #053875; }
     .el-picker-panel__shortcut.active {
       background-color: #e6f1fe;
-      color: #409EFF; }
+      color: #053875; }
   .el-picker-panel__btn {
     border: 1px solid #dcdcdc;
     color: #333;
@@ -1097,14 +1097,14 @@
       cursor: not-allowed; }
   .el-picker-panel__icon-btn {
     font-size: 12px;
-    color: #303133;
+    color: #333;
     border: 0;
     background: transparent;
     cursor: pointer;
     outline: none;
     margin-top: 8px; }
     .el-picker-panel__icon-btn:hover {
-      color: #409EFF; }
+      color: #053875; }
     .el-picker-panel__icon-btn.is-disabled {
       color: #bbb; }
       .el-picker-panel__icon-btn.is-disabled:hover {
@@ -1173,9 +1173,9 @@
     cursor: pointer;
     color: #606266; }
     .el-date-picker__header-label:hover {
-      color: #409EFF; }
+      color: #053875; }
     .el-date-picker__header-label.active {
-      color: #409EFF; }
+      color: #053875; }
   .el-date-picker__prev-btn {
     float: left; }
   .el-date-picker__next-btn {
@@ -1439,11 +1439,11 @@
     height: 0;
     cursor: pointer;
     border-radius: inherit;
-    background-color: rgba(144, 147, 153, 0.3);
+    background-color: rgba(153, 153, 153, 0.3);
     -webkit-transition: .3s background-color;
     transition: .3s background-color; }
     .el-scrollbar__thumb:hover {
-      background-color: rgba(144, 147, 153, 0.5); }
+      background-color: rgba(153, 153, 153, 0.5); }
   .el-scrollbar__bar {
     position: absolute;
     right: 2px;
@@ -1787,7 +1787,7 @@
   line-height: 20px; }
 
 .time-select-item.selected:not(.disabled) {
-  color: #409EFF;
+  color: #053875;
   font-weight: bold; }
 
 .time-select-item.disabled {

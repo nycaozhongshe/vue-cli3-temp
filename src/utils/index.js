@@ -2,6 +2,8 @@
  * Created by nytoamto on 18/7/27.
  */
 // "yy-MM-dd hh:ms:ss"
+
+let sessionLang = ''
 export function dateFtt (fmt, date) {
   // author: meizz
   var o = {
@@ -69,6 +71,7 @@ const langKey = '@@Slang'
 
 export function saveLang (lang) {
   localStorage.setItem(langKey, lang)
+  sessionLang = lang
 }
 
 export function getLang () {
@@ -78,4 +81,8 @@ export function getLang () {
   } else {
     return 'cn'
   }
+}
+
+export function postlangType () {
+  return sessionLang || getLang()
 }

@@ -12,19 +12,29 @@ export default new Router({
     {
       path: '/',
       name: 'index',
+      footerHidden: true,
       component: () => import('@/views/Index/Index.vue')
     },
 
     {
+      path: '/about',
+      name: 'about',
+      component: () => import('@/views/About/Index.vue')
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: () => import('@/views/News/Index.vue')
+    },
+    {
+      path: '/hr',
+      name: 'hr',
+      component: () => import('@/views/Hr/Index.vue')
+    },
+    {
       path: '/contacts',
       name: 'contacts',
       component: () => import('@/views/Contacts/Index.vue')
-    },
-
-    {
-      path: '/date',
-      name: 'date',
-      component: () => import('@/views/Date/Index.vue')
     }
 
   ]

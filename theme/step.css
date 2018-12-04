@@ -248,11 +248,11 @@
     position: relative;
     width: 100%; }
     .el-step__head.is-process {
-      color: #303133;
-      border-color: #303133; }
+      color: #333;
+      border-color: #333; }
     .el-step__head.is-wait {
-      color: #c0c4cc;
-      border-color: #c0c4cc; }
+      color: #BFBFBF;
+      border-color: #BFBFBF; }
     .el-step__head.is-success {
       color: #67c23a;
       border-color: #67c23a; }
@@ -260,8 +260,8 @@
       color: #f56c6c;
       border-color: #f56c6c; }
     .el-step__head.is-finish {
-      color: #409EFF;
-      border-color: #409EFF; }
+      color: #053875;
+      border-color: #053875; }
   .el-step__icon {
     position: relative;
     z-index: 1;
@@ -307,7 +307,7 @@
   .el-step__line {
     position: absolute;
     border-color: inherit;
-    background-color: #c0c4cc; }
+    background-color: #BFBFBF; }
   .el-step__line-inner {
     display: block;
     border-width: 1px;
@@ -327,15 +327,15 @@
     line-height: 38px; }
     .el-step__title.is-process {
       font-weight: bold;
-      color: #303133; }
+      color: #333; }
     .el-step__title.is-wait {
-      color: #c0c4cc; }
+      color: #BFBFBF; }
     .el-step__title.is-success {
       color: #67c23a; }
     .el-step__title.is-error {
       color: #f56c6c; }
     .el-step__title.is-finish {
-      color: #409EFF; }
+      color: #053875; }
   .el-step__description {
     padding-right: 10%;
     margin-top: -5px;
@@ -343,15 +343,15 @@
     line-height: 20px;
     font-weight: normal; }
     .el-step__description.is-process {
-      color: #303133; }
+      color: #333; }
     .el-step__description.is-wait {
-      color: #c0c4cc; }
+      color: #BFBFBF; }
     .el-step__description.is-success {
       color: #67c23a; }
     .el-step__description.is-error {
       color: #f56c6c; }
     .el-step__description.is-finish {
-      color: #409EFF; }
+      color: #053875; }
   .el-step.is-horizontal {
     display: inline-block; }
     .el-step.is-horizontal .el-step__line {
@@ -450,7 +450,7 @@
         position: absolute;
         height: 15px;
         width: 1px;
-        background: #c0c4cc; }
+        background: #BFBFBF; }
       .el-step.is-simple .el-step__arrow::before {
         -webkit-transform: rotate(-45deg) translateY(-4px);
         transform: rotate(-45deg) translateY(-4px);

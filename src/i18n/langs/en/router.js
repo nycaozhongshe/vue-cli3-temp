@@ -1,7 +1,7 @@
 export default {
-  'index': 'home',
-  'contacts': 'contacts',
-  'map': 'map',
-  'icon': 'icon',
-  'date': 'date'
+  'index': 'index',
+  'about': 'about',
+  'news': 'news',
+  'hr': 'hr',
+  'contacts': 'contacts'
 }

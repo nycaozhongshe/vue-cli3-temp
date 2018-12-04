@@ -392,7 +392,7 @@
   position: relative;
   margin: 0 auto 50px;
   background: #fff;
-  border-radius: 2px;
+  border-radius: 0px;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   -webkit-box-sizing: border-box;
@@ -428,11 +428,11 @@
     .el-dialog__headerbtn .el-dialog__close {
       color: #909399; }
     .el-dialog__headerbtn:focus .el-dialog__close, .el-dialog__headerbtn:hover .el-dialog__close {
-      color: #409EFF; }
+      color: #053875; }
   .el-dialog__title {
     line-height: 24px;
     font-size: 18px;
-    color: #303133; }
+    color: #333; }
   .el-dialog__body {
     padding: 30px 20px;
     color: #606266;

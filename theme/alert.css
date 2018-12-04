@@ -234,7 +234,7 @@
   margin: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 0px;
   position: relative;
   background-color: #fff;
   overflow: hidden;
@@ -290,7 +290,7 @@
     margin: 5px 0 0 0; }
   .el-alert__closebtn {
     font-size: 12px;
-    color: #c0c4cc;
+    color: #BFBFBF;
     opacity: 1;
     position: absolute;
     top: 12px;
