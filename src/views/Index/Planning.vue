@@ -69,8 +69,8 @@ export default {
 
   width: 100%;
   .planning-item {
-    // width: 30%;
-    // width: calc(100% - 0.5rem);
+    width: 30%;
+    width: calc(100% - 0.5rem);
     width: 100%;
     cursor: pointer;
     .content__warpper {
@@ -136,6 +136,20 @@ export default {
   }
   .planning-item + .planning-item {
     margin-left: 0.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .planning__warpper {
+    flex-flow: column;
+    .planning-item {
+      min-width: 100%;
+    }
+
+    .planning-item + .planning-item {
+      margin-left: 0;
+      margin-top: 0.4rem;
+    }
   }
 }
 </style>

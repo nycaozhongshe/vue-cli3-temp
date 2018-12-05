@@ -21,7 +21,8 @@ const cdn = {
     // 'https://unpkg.com/element-ui/lib/theme-chalk/index.css'
   ],
   js: [
-    '//at.alicdn.com/t/font_946570_bbr4ahod434.js',
+
+    '//at.alicdn.com/t/font_946570_0flfj769tikj.js',
     'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js',
     'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js',
     'https://cdn.jsdelivr.net/npm/vuex@3.0.1/dist/vuex.min.js',
@@ -148,7 +149,7 @@ module.exports = {
     hot: true,
     proxy: {
       '/api': {
-        target: 'http://erp.api.newairtek.com/api',
+        target: 'http://hongtop_zh.newairtek.com/api',
         changeOrigin: true, // 是否跨域
         pathRewrite: {
           '^/api': '/' // 需要rewrite的,

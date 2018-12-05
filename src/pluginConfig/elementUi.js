@@ -11,9 +11,11 @@ import {
   // DatePicker,
   Menu,
   Submenu,
-  MenuItem
+  MenuItem,
+  Row,
+  Col
 } from 'element-ui'
-import 'element-ui/lib/theme-chalk/base.css'
+import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
 const components = [
   Button,
   Container,
@@ -24,7 +26,10 @@ const components = [
   // DatePicker,
   Menu,
   Submenu,
-  MenuItem
+  MenuItem,
+  CollapseTransition,
+  Row,
+  Col
 ]
 const install = function (Vue, opts = {}) {
   components.forEach(component => {

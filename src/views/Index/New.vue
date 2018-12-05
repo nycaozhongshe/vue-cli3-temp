@@ -2,7 +2,7 @@
 <template>
   <div class="index-new__warpper ">
     <div class="new-item"
-         v-for="(item,index) in 3 "
+         v-for="(item,index) in newsList "
          :key="index">
       <!-- 箭头 -->
       <div class="jiantou__warpper">
@@ -21,11 +21,10 @@
         <div class="mask">
 
           <div>
-            <span>January 12, 2018</span>
-            <h4>新闻标题新闻标题新闻标题新闻标题新闻
-              标题新闻标题</h4>
+            <span>{{item.publish_time}}</span>
+            <h4>{{item.title}}</h4>
             <div class="content">
-              新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新闻详情新...
+              {{item.summary}}
             </div>
             <div class="more">
               Read more
@@ -55,20 +54,30 @@ export default {
 
   data () {
     return {
-
+      newsList: []
     }
   },
   computed: {},
 
   watch: {},
 
-  created () { },
+  created () {
+    this.getNewsList()
+  },
 
   mounted () { },
 
   destroyed () { },
 
-  methods: {}
+  methods: {
+    getNewsList () {
+      this.$store
+        .dispatch('getNewsList', { page: 0, pageSize: 3 }).then((res) => {
+          console.log(res.data)
+          this.newsList = res.data
+        })
+    }
+  }
 }
 
 </script>
@@ -76,6 +85,7 @@ export default {
 .index-new__warpper {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   .new-item {
     cursor: pointer;
     position: relative;
@@ -83,11 +93,13 @@ export default {
     width: calc(100% / 3);
     display: flex;
     flex-flow: column;
+
     &:nth-child(2) {
       .text-content {
         order: -1;
       }
     }
+
     .jiantou__warpper {
       position: absolute;
       top: 50%;
@@ -165,6 +177,19 @@ export default {
           .more {
             margin-top: 0.1rem;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .index-new__warpper {
+    .new-item {
+      min-width: 100%;
+      &:nth-child(2) {
+        .text-content {
+          order: 1;
         }
       }
     }

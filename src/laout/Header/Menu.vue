@@ -2,15 +2,26 @@
   <div class="menu__warpper">
     <div v-for="(item,index) in navLsit"
          :key="index"
-         class="menu-item"
-         :class="{active:$route.path===item.path}"
-         @click="gotoPage(item.path)">
-      {{ $t('router.'+item.name) }}
-      <div class="float">
-        测试
+         class="menu-list"
+         @mouseenter="handleMouseenter(index)"
+         @mouseleave="handleMouseleave(index)">
+      <div class="menu-item"
+           :class="{active:$route.path===item.path}"
+           @click="gotoPage(item.path)">
+        <span> {{ $t('router.'+item.name) }}</span>
       </div>
-
+      <el-collapse-transition>
+        <div class="float"
+             v-show="item.show">
+          <span v-for="(i,j) in item.children"
+                :key="j"
+                @click="gotoPage(i.path)">
+            {{$t('router.'+i.name)}}<br>
+          </span>
+        </div>
+      </el-collapse-transition>
     </div>
+
   </div>
 </template>
 
@@ -23,13 +34,18 @@ export default {
   data () {
     return {
       hc: false,
-      show: false
+      show: false,
+      navLsit: []
     }
   },
   computed: {
-    navLsit () {
-      return this.$router.options.routes
-    }
+    // navLsit () {
+    //   console.log('navLsit')
+    //   return this.$router.options.routes
+    // }
+  },
+  mounted () {
+    this.navLsit = this.$router.options.routes
   },
   methods: {
     hasChildren () {
@@ -38,6 +54,12 @@ export default {
     },
     gotoPage (path) {
       this.$router.push(path)
+    },
+    handleMouseenter (index) {
+      this.navLsit[index].show = true
+    },
+    handleMouseleave (index) {
+      this.navLsit[index].show = false
     }
   }
 }
@@ -49,31 +71,48 @@ export default {
   flex-direction: row;
   font-size: 0.18rem;
   position: relative;
-  .menu-item {
-    padding: 1em 1em;
-    cursor: pointer;
+  .menu-list {
     position: relative;
-    &:hover,
-    &.active {
-      border-bottom: 0.03rem solid $--color-primary;
-      color: $--color-primary;
-    }
+    // padding: 0 0.1rem;
+    padding: 0 1.2em;
     .float {
-      display: none;
       position: absolute;
+      z-index: 9999;
+      top: 100%;
       left: 0;
-      bottom: 0;
-      background-color: #38f;
+      width: 100%;
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
+      text-align: center;
+      line-height: 0.5rem;
+      font-size: 0.14rem;
+      // margin-top: 0.02rem;
+      background: rgba(0, 0, 0, 0.53);
+      filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);
       color: #fff;
-      transition: 1s;
-      overflow: hidden;
-      margin-left: 10px;
-    }
-    &:hover {
-      .float {
-        display: block;
+      span {
+        cursor: pointer;
+        &:hover {
+          // color: $--color-primary-light-8;
+          text-decoration: underline;
+        }
       }
     }
+    .menu-item {
+      cursor: pointer;
+      position: relative;
+      padding: 1em 0;
+      &:hover,
+      &.active {
+        border-bottom: 0.03rem solid $--color-primary;
+        color: $--color-primary;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .menu__warpper {
+    display: none;
   }
 }
 </style>

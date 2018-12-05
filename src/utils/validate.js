@@ -2,7 +2,7 @@
  * @Author: caozhongshe
  * @Date: 2018-10-23 10:15:22
  * @Last Modified by: caozhongshe
- * @Last Modified time: 2018-10-23 13:34:37
+ * @Last Modified time: 2018-12-05 15:44:01
  */
 
 export function isvalidUsername (str) {
@@ -10,6 +10,11 @@ export function isvalidUsername (str) {
   return validMap.indexOf(str.trim()) >= 0
 }
 
+export function validateEmail (str) {
+  // eslint-disable-next-line
+  const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+  return reg.test(str)
+}
 /* 合法uri */
 export function validateURL (textval) {
   const urlregex = /^(https?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?'\\+&%$#=~_-]+))*$/

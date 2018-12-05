@@ -7,14 +7,15 @@
       <h4>{{$t('index.contacts')}}</h4>
 
       <div class="content">
-        <el-input v-model="input"
+        <el-input v-model="params.email"
                   :placeholder="$t('placeholder.email')">
         </el-input>
-        <el-input v-model="input"
+        <el-input v-model="params.message"
                   :placeholder="$t('placeholder.bbs')">
         </el-input>
-        <el-button type="primary">
-          发送
+        <el-button type="primary"
+                   @click="contact">
+          {{ $t('placeholder.submit')}}
         </el-button>
 
       </div>
@@ -54,6 +55,7 @@
 </template>
 
 <script>
+import { validateEmail } from '@/utils/validate.js'
 export default {
   name: 'Footer',
 
@@ -65,7 +67,10 @@ export default {
 
   data () {
     return {
-
+      params: {
+        email: '',
+        message: ''
+      }
     }
   },
   computed: {
@@ -81,7 +86,6 @@ export default {
   created () { },
 
   mounted () {
-    console.log(this.$router.options.routes)
   },
 
   destroyed () { },
@@ -89,6 +93,21 @@ export default {
   methods: {
     gotoPage (path) {
       this.$router.push(path)
+    },
+    contact () {
+      //
+      if (!this.params.email || !this.params.message) {
+        this.$message.warning('内容不能为空')
+        return
+      }
+      if (!validateEmail(this.params.email)) {
+        this.$message.warning('输入正确邮箱')
+        return
+      }
+      this.$store
+        .dispatch('contact', this.params).then((res) => {
+          console.log(res)
+        })
     }
   }
 }
@@ -114,6 +133,7 @@ export default {
         cursor: pointer;
         &:hover {
           color: $--color-primary;
+          text-decoration: underline;
         }
       }
       h5 {
@@ -144,9 +164,6 @@ export default {
   padding-top: 0.27rem;
   padding-bottom: 0.27rem;
 }
-</style>
-
-<style lang="scss" scoped>
 .footer .contacts {
   padding-bottom: 0.58rem;
   border-bottom: 1px solid $--border-color-base;
@@ -162,6 +179,47 @@ export default {
     }
     .el-button {
       padding: 0.12rem 0.78rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    .contacts {
+      padding: 0 0.2rem 0.4rem;
+      .content {
+        flex-wrap: wrap;
+        flex-flow: column;
+        .el-input {
+          min-width: 100%;
+          display: block;
+          margin-bottom: 0.24rem;
+        }
+        .el-button {
+          min-width: 100%;
+          // align-self: flex-end;
+        }
+      }
+    }
+    .top-footer {
+      flex-wrap: wrap;
+      .links {
+        width: 100%;
+        padding: 0 0.2rem;
+        justify-content: space-between;
+
+        div + div {
+          margin-left: 0;
+        }
+      }
+
+      .qr__warpper {
+        margin-top: 0.2rem;
+        min-width: 100%;
+      }
+    }
+    .bottom-footer {
+      width: 100%;
     }
   }
 }

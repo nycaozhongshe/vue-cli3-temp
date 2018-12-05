@@ -8,6 +8,8 @@ import VueLazyload from 'vue-lazyload'
 // import VueProgressiveImage from 'vue-progressive-image'
 import '@/router/permission'
 import '@/style/index.scss'
+import 'element-ui/lib/theme-chalk/base.css'
+
 import elementUiOptions from '@/pluginConfig/elementUi'
 
 // import VueLazyloadOptions from '@/pluginConfig/vueLazyload.js'

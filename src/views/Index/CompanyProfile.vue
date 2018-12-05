@@ -98,7 +98,6 @@ export default {
       margin-top: 0.48rem;
       border: 1px solid $--color-primary;
       transition: 0.4s all;
-
       &:hover {
         color: $--color-primary;
         transform: translateX(5px);
@@ -109,6 +108,26 @@ export default {
         color: $--color-primary-light-9;
         background: $--color-primary;
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .company-profile__warpper {
+    flex-flow: column;
+    padding: 0;
+    .img__warpper,
+    .text__warpper {
+      width: 100%;
+      margin-left: 0;
+    }
+    .img__warpper {
+      .about {
+        display: none;
+      }
+    }
+    .text__warpper {
+      padding: 0.2rem;
     }
   }
 }

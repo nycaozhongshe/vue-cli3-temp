@@ -36,7 +36,9 @@ export default {
 
   created () { },
 
-  mounted () { },
+  mounted () {
+    this.resize()
+  },
 
   methods: {
     reload () {
@@ -44,6 +46,19 @@ export default {
       this.$nextTick(function () {
         this.isRouterAlive = true
       })
+    },
+    resize () {
+      this.$store.state.clientWidth = document.documentElement.clientWidth
+      let resizeTag = true
+      window.onresize = () => {
+        if (resizeTag) {
+          this.$store.state.clientWidth = document.documentElement.clientWidth
+          resizeTag = false
+          setTimeout(() => {
+            resizeTag = true
+          }, 100)
+        }
+      }
     }
 
   }

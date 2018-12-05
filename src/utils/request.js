@@ -2,7 +2,7 @@
  * @Author: caozhongshe
  * @Date: 2018-08-14 15:25:55
  * @Last Modified by: caozhongshe
- * @Last Modified time: 2018-11-16 14:38:09
+ * @Last Modified time: 2018-12-05 15:24:52
  */
 // import router from '../router/index'
 import axios from 'axios'
@@ -15,7 +15,11 @@ export const service = axios.create({
 })
 
 let interceptor = response => {
-  return true
+  if (response.status === 200 || response.status === '200') {
+    return true
+  } else {
+    return false
+  }
 }
 
 // request拦截器
@@ -46,7 +50,7 @@ service.interceptors.response.use(
   response => {
     tryHideFullScreenLoading()
     if (interceptor(response)) {
-      return response.data
+      return response.data.data
     } else {
       return Promise.reject(response.data)
     }
