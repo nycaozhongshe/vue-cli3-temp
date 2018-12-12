@@ -15,7 +15,9 @@ import {
   Card,
   Transfer,
   Tree,
-  Tag
+  Tag,
+  Tabs,
+  TabPane
 
   // Header,
   // Footer,
@@ -43,7 +45,9 @@ const components = [
   Card,
   Transfer,
   Tree,
-  Tag
+  Tag,
+  Tabs,
+  TabPane
 
   // Transfer
   // Header,

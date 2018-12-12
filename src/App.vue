@@ -44,6 +44,19 @@ export default {
       this.$nextTick(function () {
         this.isRouterAlive = true
       })
+    },
+    resize () {
+      this.$stroe.state.clientWidth = document.documentElement.clientWidth
+      let resizeTag = true
+      window.onresize = () => {
+        if (resizeTag) {
+          this.$stroe.state.clientWidth = document.documentElement.clientWidth
+          resizeTag = false
+          setTimeout(() => {
+            resizeTag = true
+          }, 100)
+        }
+      }
     }
 
   }
@@ -55,4 +68,18 @@ export default {
 // 全局font-size: 20px;
 // 变量$text-color、$theme-color
 // 和button()的mixin是借助sass-resources-loader实现的
+
+#app,
+body,
+html,
+.el-container,
+.el-main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+// #app .el-main {
+//   padding: 0;
+// }
 </style>
