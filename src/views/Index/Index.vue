@@ -318,7 +318,7 @@ export default {
 
   /* Event 参数 className 的值 */
   .done:before {
-    content: '【 已完成 】';
+    content: "【 已完成 】";
     background-color: yellow;
     color: green;
     text-align: center;
@@ -327,7 +327,7 @@ export default {
   }
   /* Event 参数 className 的值 */
   .doing:before {
-    content: '【 未完成 】';
+    content: "【 未完成 】";
     background-color: yellow;
     color: red;
     text-align: center;

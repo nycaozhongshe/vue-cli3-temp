@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "el-tree-transfer": "^1.9.7",
+    "el-tree-transfer": "^1.9.8",
     "element-ui": "^2.4.8",
     "npm": "^6.4.1",
     "nprogress": "^0.2.0",
