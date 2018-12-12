@@ -149,7 +149,10 @@ var demoEvents = [
     title: 'Sunny Out of Office',
     start: '2018-10-25',
     end: '2018-11-11',
-    color: '#ad111a'
+    color: '#ad111a',
+    data: {
+
+    }
   }, {
     title: 'Sunny Out of Office',
     start: '2018-10-25',
