@@ -12,11 +12,10 @@
   <link rel="dns-prefetch"
         href="http://hongtop_zh.newairtek.com">
   <!-- 微信浏览器兼容问题 -->
-
-
+  <% for (var i in htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.date) { %>
   <meta http-equiv="Last-Modified"
-        content="Wed Nov 28 2018 16:04:10 GMT+0800">
-
+        content="<%= htmlWebpackPlugin.options.cdn.date[i] %>">
+  <% } %>
 
   <!-- 兼容内核 -->
   <meta http-equiv="X-UA-Compatible"
