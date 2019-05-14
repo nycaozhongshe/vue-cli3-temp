@@ -2,7 +2,15 @@
   <div id="app">
     <el-container direction="vertical">
       <Header></Header>
+
       <el-main>
+
+        <dateTools :dateToolsKey="2"
+                   :trainDateList="trainDateList2"
+                   :trainDateFullList="trainDateFullList"
+                   ref="topDateTools2"
+                   @topDateEvent2="topDateFun2">
+        </dateTools>
         <keep-alive v-if="isRouterAlive">
           <router-view />
         </keep-alive>
@@ -15,6 +23,7 @@
 <script>
 import Header from './laout/Header/Index.vue'
 import Footer from './laout/Footer/Index'
+import DateTools from './components/DateTools'
 export default {
   name: 'App',
   provide () { // 注册一个方法
@@ -25,12 +34,15 @@ export default {
 
   components: {
     Header,
-    Footer
+    Footer,
+    DateTools
   },
   data () {
     return {
       set: false,
-      isRouterAlive: true
+      isRouterAlive: true,
+      trainDateList2: [],
+      trainDateFullList: []
     }
   },
 
@@ -39,6 +51,9 @@ export default {
   mounted () { },
 
   methods: {
+    topDateFun2 () {
+
+    },
     reload () {
       this.isRouterAlive = false
       this.$nextTick(function () {
