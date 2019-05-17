@@ -11,6 +11,12 @@
                    ref="topDateTools2"
                    @topDateEvent2="topDateFun2">
         </dateTools>
+
+        <div id="demo">
+          <calendar @change="onChange" />
+          <inlineCalendar />
+        </div>
+
         <keep-alive v-if="isRouterAlive">
           <router-view />
         </keep-alive>
@@ -51,6 +57,9 @@ export default {
   mounted () { },
 
   methods: {
+    onChange (date) {
+      console.log(date.format('YY-MM-DD'))
+    },
     topDateFun2 () {
 
     },

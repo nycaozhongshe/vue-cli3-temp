@@ -13,6 +13,9 @@ import elementUiOptions from '@/pluginConfig/elementUi'
 // import VueLazyloadOptions from '@/pluginConfig/vueLazyload.js'
 // VueLazyloadOptions
 // 懒加载
+
+import Calendar from 'vue-mobile-calendar'
+Vue.use(Calendar)
 Vue.use(VueLazyload, {})
 
 // 渐进式图片加载
